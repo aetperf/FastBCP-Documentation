@@ -24,11 +24,15 @@ Teradata | ✅ | ✅ | ❌
 
 
 ## Quick Start
-If you want to use it quickly, download the lastest Release and unzip it to a directory 
+If you want to use it quickly, download the lastest Release and unzip it to a director. 
 
 For the following databases drivers are embedded : Clickhouse, DuckDB, MS SQLServer, Netezza, Oracle, MySQL, PostgreSQL, SAP HANA and Teradata .
 
 You will need to install your ODBC or OLEDB drivers of your favorite database in order to use it with ODBC or OLEDB connectiontype.
+
+You can use the FastBCP Wizard to generate a FastBCP command line : [FastBCP Wizard](./FastBCPWizard.html
+
+
  
 
 # Logging 
