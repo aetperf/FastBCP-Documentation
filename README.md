@@ -30,7 +30,7 @@ For the following databases drivers are embedded : Clickhouse, DuckDB, MS SQLSer
 
 You will need to install your ODBC or OLEDB drivers of your favorite database in order to use it with ODBC or OLEDB connectiontype.
 
-You can use the FastBCP Wizard to generate a FastBCP command line : [FastBCP Wizard](./FastBCPWizard.html)
+You can use the FastBCP Wizard to generate a FastBCP command line : [FastBCP Wizard](./FastBCP_Wizard.html)
 
 
  
