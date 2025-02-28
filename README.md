@@ -387,23 +387,20 @@ It will be used in the log to identify the run.
 
 ``` powershell
 .\FastBCP.exe `
---connectiontype mssql `
---server localhost `
---database "tpch10_collation_bin2" `
---trusted `
---sourceschema "dbo" `
---sourcetable "orders" `
+--connectiontype "pgcopy" `
+--server "localhost:15432" `
+--database "tpch" `
+--user "FastUser" `
+--password "FastPassword" `
+--query "select * from tpch_10.orders WHERE o_orderdate between '19950101' and '19951231'" `
 --directory "D:\temp" `
---fileoutput "mssql_orders.csv" `
---decimalseparator "." `
---delimiter "|" `
---dateformat "yyyy-MM-dd HH:mm:ss" `
+--fileoutput "orders_1995.parquet" `
 --encoding "UTF-8" `
 --method RangeId `
 --distributekeycolumn "o_orderkey" `
 --paralleldegree 7 `
 --merge true `
---runid "mssql_to_csv_parallel_rangeid"
+--runid "pgcopy_to_parquet_parallel_rangeid"
 ```
 
 
