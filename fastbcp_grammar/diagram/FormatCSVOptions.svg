@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="811" height="187">
+   <defs>
+      <style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #171717; stroke-width: 1;}
+    .bold-line            {stroke: #F0F0F0; shape-rendering: crispEdges; stroke-width: 2;}
+    .thin-line            {stroke: #F0F0F0; shape-rendering: crispEdges}
+    .filled               {fill: #171717; stroke: none;}
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #F0F0F0;
+                            font-weight: bold;
+                          }
+    text.nonterminal      {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #F0F0F0;
+                            font-weight: normal;
+                          }
+    text.regexp           {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #F0F0F0;
+                            font-weight: normal;
+                          }
+    rect, circle, polygon {fill: #171717; stroke: #171717;}
+    rect.terminal         {fill: #222222; stroke: #171717; stroke-width: 1;}
+    rect.nonterminal      {fill: #2A2A2A; stroke: #171717; stroke-width: 1;}
+    rect.text             {fill: none; stroke: none;}
+    polygon.regexp        {fill: #2F2F2F; stroke: #171717; stroke-width: 1;}
+  </style>
+   </defs>
+   <polygon points="9 5 1 1 1 9"/>
+   <polygon points="17 5 9 1 9 9"/>
+   <rect x="51" y="23" width="92" height="32" rx="10"/>
+   <rect x="49"
+         y="21"
+         width="92"
+         height="32"
+         class="terminal"
+         rx="10"/>
+   <text class="terminal" x="59" y="41">--delimiter</text>
+   <a xmlns:xlink="http://www.w3.org/1999/xlink"
+      xlink:href="#Delimiter"
+      xlink:title="Delimiter">
+      <rect x="163" y="23" width="76" height="32"/>
+      <rect x="161" y="21" width="76" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="171" y="41">Delimiter</text>
+   </a>
+   <rect x="299" y="23" width="106" height="32" rx="10"/>
+   <rect x="297"
+         y="21"
+         width="106"
+         height="32"
+         class="terminal"
+         rx="10"/>
+   <text class="terminal" x="307" y="41">--dateformat</text>
+   <a xmlns:xlink="http://www.w3.org/1999/xlink"
+      xlink:href="#DateFormat"
+      xlink:title="DateFormat">
+      <rect x="425" y="23" width="94" height="32"/>
+      <rect x="423" y="21" width="94" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="433" y="41">DateFormat</text>
+   </a>
+   <rect x="579" y="23" width="92" height="32" rx="10"/>
+   <rect x="577"
+         y="21"
+         width="92"
+         height="32"
+         class="terminal"
+         rx="10"/>
+   <text class="terminal" x="587" y="41">--encoding</text>
+   <a xmlns:xlink="http://www.w3.org/1999/xlink"
+      xlink:href="#Encoding"
+      xlink:title="Encoding">
+      <rect x="691" y="23" width="78" height="32"/>
+      <rect x="689" y="21" width="78" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="699" y="41">Encoding</text>
+   </a>
+   <rect x="237" y="109" width="78" height="32" rx="10"/>
+   <rect x="235"
+         y="107"
+         width="78"
+         height="32"
+         class="terminal"
+         rx="10"/>
+   <text class="terminal" x="245" y="127">--quotes</text>
+   <rect x="355" y="109" width="48" height="32" rx="10"/>
+   <rect x="353"
+         y="107"
+         width="48"
+         height="32"
+         class="terminal"
+         rx="10"/>
+   <text class="terminal" x="363" y="127">true</text>
+   <rect x="355" y="153" width="52" height="32" rx="10"/>
+   <rect x="353"
+         y="151"
+         width="52"
+         height="32"
+         class="terminal"
+         rx="10"/>
+   <text class="terminal" x="363" y="171">false</text>
+   <rect x="487" y="109" width="96" height="32" rx="10"/>
+   <rect x="485"
+         y="107"
+         width="96"
+         height="32"
+         class="terminal"
+         rx="10"/>
+   <text class="terminal" x="495" y="127">--noheader</text>
+   <rect x="643" y="109" width="120" height="32" rx="10"/>
+   <rect x="641"
+         y="107"
+         width="120"
+         height="32"
+         class="terminal"
+         rx="10"/>
+   <text class="terminal" x="651" y="127">--timestamped</text>
+   <path class="line"
+         d="m17 5 h2 m20 0 h10 m0 0 h198 m-228 0 h20 m208 0 h20 m-248 0 q10 0 10 10 m228 0 q0 -10 10 -10 m-238 10 v12 m228 0 v-12 m-228 12 q0 10 10 10 m208 0 q10 0 10 -10 m-218 10 h10 m92 0 h10 m0 0 h10 m76 0 h10 m40 -32 h10 m0 0 h230 m-260 0 h20 m240 0 h20 m-280 0 q10 0 10 10 m260 0 q0 -10 10 -10 m-270 10 v12 m260 0 v-12 m-260 12 q0 10 10 10 m240 0 q10 0 10 -10 m-250 10 h10 m106 0 h10 m0 0 h10 m94 0 h10 m40 -32 h10 m0 0 h200 m-230 0 h20 m210 0 h20 m-250 0 q10 0 10 10 m230 0 q0 -10 10 -10 m-240 10 v12 m230 0 v-12 m-230 12 q0 10 10 10 m210 0 q10 0 10 -10 m-220 10 h10 m92 0 h10 m0 0 h10 m78 0 h10 m22 -32 l2 0 m2 0 l2 0 m2 0 l2 0 m-616 86 l2 0 m2 0 l2 0 m2 0 l2 0 m22 0 h10 m0 0 h200 m-230 0 h20 m210 0 h20 m-250 0 q10 0 10 10 m230 0 q0 -10 10 -10 m-240 10 v12 m230 0 v-12 m-230 12 q0 10 10 10 m210 0 q10 0 10 -10 m-220 10 h10 m78 0 h10 m20 0 h10 m48 0 h10 m0 0 h4 m-92 0 h20 m72 0 h20 m-112 0 q10 0 10 10 m92 0 q0 -10 10 -10 m-102 10 v24 m92 0 v-24 m-92 24 q0 10 10 10 m72 0 q10 0 10 -10 m-82 10 h10 m52 0 h10 m60 -76 h10 m0 0 h106 m-136 0 h20 m116 0 h20 m-156 0 q10 0 10 10 m136 0 q0 -10 10 -10 m-146 10 v12 m136 0 v-12 m-136 12 q0 10 10 10 m116 0 q10 0 10 -10 m-126 10 h10 m96 0 h10 m40 -32 h10 m0 0 h130 m-160 0 h20 m140 0 h20 m-180 0 q10 0 10 10 m160 0 q0 -10 10 -10 m-170 10 v12 m160 0 v-12 m-160 12 q0 10 10 10 m140 0 q10 0 10 -10 m-150 10 h10 m120 0 h10 m23 -32 h-3"/>
+   <polygon points="801 91 809 87 809 95"/>
+   <polygon points="801 91 793 87 793 95"/>
+</svg>

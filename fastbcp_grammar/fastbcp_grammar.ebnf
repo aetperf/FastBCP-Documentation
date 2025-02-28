@@ -1,0 +1,72 @@
+Syntax ::=
+    FastBCPCommand FastBCPOptions
+
+FastBCPCommand ::=
+    ( "'.\FastBCP.exe'" | "'./fastbcp'" )
+
+FastBCPOptions ::=
+    "--connectiontype" ConnectionType
+    ConnectionParameters
+    SourceInfos
+    (OutputInfoCSV FormatCSVOptions | OutputInfoParquet | OutputInfoBinary)
+    AdvancedParameters
+    LogParameters
+
+
+ConnectionType ::=
+    ( "clickhouse"
+    | "duckdb"
+    | "hana"
+    | "mssql"
+    | "mysql"
+    | "nzsql"
+    | "odbc"
+    | "oledb"
+    | "oraodp"
+    | "pgcopy"
+    | "pgsql"
+    | "teradata"
+    )
+
+ConnectionParameters ::=
+    ( 
+      "--server"
+      ("Host" | "Host:Port" | "Host\InstanceName" | "Host:Port/TNSService" ) 
+      ( "--trusted"  | ( "--user" "Username" "--password" "Password" ))
+      "--database" "DatabaseName"
+    )
+  | ( "--connectionstring" "ConnectString" )
+
+
+SourceInfos ::=
+    ( "--fileinput" InputFilePath | "--query" Query |( "--sourceschema" SchemaName "--sourcetable" TableName))
+
+
+OutputInfoCSV ::=
+     "--fileoutput" (FileName.csv|FileName.tsv) 
+     "--directory" OutputDirectory
+
+FormatCSVOptions ::=
+     (|"--delimiter" Delimiter)
+     (|"--dateformat" DateFormat)
+     (|"--encoding" Encoding)
+     (|"--quotes" ( "true" | "false" ))
+     (|"--noheader")
+     (|"--timestamped")
+
+
+OutputInfoParquet ::=
+     "--fileoutput" FileName.parquet 
+     "--directory" OutputDirectory
+     
+OutputInfoBinary ::=
+     "--fileoutput" FileName.binary 
+     "--directory" OutputDirectory
+
+AdvancedParameters ::=
+     "--method" ( "None"| ((("Random" | "DataDriven" | "RangeId" | "Ntile" ) "--distributekeycolumn" KeyColumn) | "Ctid" | "Rowid"  ) "--paralleldegree" Degree "--merge" ( "true" | "false" )) 
+
+LogParameters ::=
+    (|"--runid" RunId)
+    (|"--settingsfile" SettingsFile)
+

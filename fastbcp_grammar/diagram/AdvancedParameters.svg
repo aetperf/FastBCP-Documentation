@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1005" height="453">
+<svg xmlns="http://www.w3.org/2000/svg" width="1011" height="367">
    <defs>
       <style type="text/css">
     @namespace "http://www.w3.org/2000/svg";
@@ -29,16 +29,16 @@
     polygon.regexp        {fill: #2F2F2F; stroke: #171717; stroke-width: 1;}
   </style>
    </defs>
-   <polygon points="9 17 1 13 1 21"/>
-   <polygon points="17 17 9 13 9 21"/>
-   <rect x="31" y="3" width="82" height="32" rx="10"/>
-   <rect x="29"
+   <polygon points="11 17 3 13 3 21"/>
+   <polygon points="19 17 11 13 11 21"/>
+   <rect x="33" y="3" width="82" height="32" rx="10"/>
+   <rect x="31"
          y="1"
          width="82"
          height="32"
          class="terminal"
          rx="10"/>
-   <text class="terminal" x="39" y="21">--method</text>
+   <text class="terminal" x="41" y="21">--method</text>
    <rect x="45" y="69" width="54" height="32" rx="10"/>
    <rect x="43"
          y="67"
@@ -149,38 +149,8 @@
          class="terminal"
          rx="10"/>
    <text class="terminal" x="899" y="175">false</text>
-   <rect x="533" y="419" width="68" height="32" rx="10"/>
-   <rect x="531"
-         y="417"
-         width="68"
-         height="32"
-         class="terminal"
-         rx="10"/>
-   <text class="terminal" x="541" y="437">--runid</text>
-   <a xmlns:xlink="http://www.w3.org/1999/xlink"
-      xlink:href="#RunId"
-      xlink:title="RunId">
-      <rect x="621" y="419" width="56" height="32"/>
-      <rect x="619" y="417" width="56" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="629" y="437">RunId</text>
-   </a>
-   <rect x="737" y="419" width="106" height="32" rx="10"/>
-   <rect x="735"
-         y="417"
-         width="106"
-         height="32"
-         class="terminal"
-         rx="10"/>
-   <text class="terminal" x="745" y="437">--settingsfile</text>
-   <a xmlns:xlink="http://www.w3.org/1999/xlink"
-      xlink:href="#SettingsFile"
-      xlink:title="SettingsFile">
-      <rect x="863" y="419" width="94" height="32"/>
-      <rect x="861" y="417" width="94" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="871" y="437">SettingsFile</text>
-   </a>
    <path class="line"
-         d="m17 17 h2 m0 0 h10 m82 0 h10 m2 0 l2 0 m2 0 l2 0 m2 0 l2 0 m-132 66 l2 0 m2 0 l2 0 m2 0 l2 0 m22 0 h10 m54 0 h10 m0 0 h864 m-958 0 h20 m938 0 h20 m-978 0 q10 0 10 10 m958 0 q0 -10 10 -10 m-968 10 v24 m958 0 v-24 m-958 24 q0 10 10 10 m938 0 q10 0 10 -10 m-908 10 h10 m74 0 h10 m0 0 h22 m-136 0 h20 m116 0 h20 m-156 0 q10 0 10 10 m136 0 q0 -10 10 -10 m-146 10 v24 m136 0 v-24 m-136 24 q0 10 10 10 m116 0 q10 0 10 -10 m-126 10 h10 m96 0 h10 m-126 -10 v20 m136 0 v-20 m-136 20 v24 m136 0 v-24 m-136 24 q0 10 10 10 m116 0 q10 0 10 -10 m-126 10 h10 m76 0 h10 m0 0 h20 m-126 -10 v20 m136 0 v-20 m-136 20 v24 m136 0 v-24 m-136 24 q0 10 10 10 m116 0 q10 0 10 -10 m-126 10 h10 m52 0 h10 m0 0 h44 m20 -132 h10 m170 0 h10 m0 0 h10 m90 0 h10 m-476 0 h20 m456 0 h20 m-496 0 q10 0 10 10 m476 0 q0 -10 10 -10 m-486 10 v156 m476 0 v-156 m-476 156 q0 10 10 10 m456 0 q10 0 10 -10 m-466 10 h10 m46 0 h10 m0 0 h390 m-466 -10 v20 m476 0 v-20 m-476 20 v24 m476 0 v-24 m-476 24 q0 10 10 10 m456 0 q10 0 10 -10 m-466 10 h10 m62 0 h10 m0 0 h374 m20 -220 h10 m130 0 h10 m0 0 h10 m66 0 h10 m0 0 h10 m74 0 h10 m20 0 h10 m48 0 h10 m0 0 h4 m-92 0 h20 m72 0 h20 m-112 0 q10 0 10 10 m92 0 q0 -10 10 -10 m-102 10 v24 m92 0 v-24 m-92 24 q0 10 10 10 m72 0 q10 0 10 -10 m-82 10 h10 m52 0 h10 m42 -88 l2 0 m2 0 l2 0 m2 0 l2 0 m-514 318 l2 0 m2 0 l2 0 m2 0 l2 0 m22 0 h10 m0 0 h154 m-184 0 h20 m164 0 h20 m-204 0 q10 0 10 10 m184 0 q0 -10 10 -10 m-194 10 v12 m184 0 v-12 m-184 12 q0 10 10 10 m164 0 q10 0 10 -10 m-174 10 h10 m68 0 h10 m0 0 h10 m56 0 h10 m40 -32 h10 m0 0 h230 m-260 0 h20 m240 0 h20 m-280 0 q10 0 10 10 m260 0 q0 -10 10 -10 m-270 10 v12 m260 0 v-12 m-260 12 q0 10 10 10 m240 0 q10 0 10 -10 m-250 10 h10 m106 0 h10 m0 0 h10 m94 0 h10 m23 -32 h-3"/>
-   <polygon points="995 401 1003 397 1003 405"/>
-   <polygon points="995 401 987 397 987 405"/>
+         d="m19 17 h2 m0 0 h10 m82 0 h10 m2 0 l2 0 m2 0 l2 0 m2 0 l2 0 m-134 66 l2 0 m2 0 l2 0 m2 0 l2 0 m22 0 h10 m54 0 h10 m0 0 h864 m-958 0 h20 m938 0 h20 m-978 0 q10 0 10 10 m958 0 q0 -10 10 -10 m-968 10 v24 m958 0 v-24 m-958 24 q0 10 10 10 m938 0 q10 0 10 -10 m-908 10 h10 m74 0 h10 m0 0 h22 m-136 0 h20 m116 0 h20 m-156 0 q10 0 10 10 m136 0 q0 -10 10 -10 m-146 10 v24 m136 0 v-24 m-136 24 q0 10 10 10 m116 0 q10 0 10 -10 m-126 10 h10 m96 0 h10 m-126 -10 v20 m136 0 v-20 m-136 20 v24 m136 0 v-24 m-136 24 q0 10 10 10 m116 0 q10 0 10 -10 m-126 10 h10 m76 0 h10 m0 0 h20 m-126 -10 v20 m136 0 v-20 m-136 20 v24 m136 0 v-24 m-136 24 q0 10 10 10 m116 0 q10 0 10 -10 m-126 10 h10 m52 0 h10 m0 0 h44 m20 -132 h10 m170 0 h10 m0 0 h10 m90 0 h10 m-476 0 h20 m456 0 h20 m-496 0 q10 0 10 10 m476 0 q0 -10 10 -10 m-486 10 v156 m476 0 v-156 m-476 156 q0 10 10 10 m456 0 q10 0 10 -10 m-466 10 h10 m46 0 h10 m0 0 h390 m-466 -10 v20 m476 0 v-20 m-476 20 v24 m476 0 v-24 m-476 24 q0 10 10 10 m456 0 q10 0 10 -10 m-466 10 h10 m62 0 h10 m0 0 h374 m20 -220 h10 m130 0 h10 m0 0 h10 m66 0 h10 m0 0 h10 m74 0 h10 m20 0 h10 m48 0 h10 m0 0 h4 m-92 0 h20 m72 0 h20 m-112 0 q10 0 10 10 m92 0 q0 -10 10 -10 m-102 10 v24 m92 0 v-24 m-92 24 q0 10 10 10 m72 0 q10 0 10 -10 m-82 10 h10 m52 0 h10 m43 -88 h-3"/>
+   <polygon points="1001 83 1009 79 1009 87"/>
+   <polygon points="1001 83 993 79 993 87"/>
 </svg>

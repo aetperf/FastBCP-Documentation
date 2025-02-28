@@ -111,7 +111,7 @@ For Windows
 .\FastBCP.exe [parameters]
 ```
 
-# CLI Parameters
+# CLI Parameters (grammar accessible [here](fastbcp_grammar/index.md))
 
 The parameters can be in short pattern using signe dash (-) or long pattern using double dash (--)
 
