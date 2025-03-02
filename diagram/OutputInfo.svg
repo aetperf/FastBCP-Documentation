@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="561" height="37">
+<svg xmlns="http://www.w3.org/2000/svg" width="463" height="37">
    <defs>
       <style type="text/css">
     @namespace "http://www.w3.org/2000/svg";
-    .line                 {fill: none; stroke: #181818; stroke-width: 1;}
+    .line                 {fill: none; stroke: #171717; stroke-width: 1;}
     .bold-line            {stroke: #F0F0F0; shape-rendering: crispEdges; stroke-width: 2;}
     .thin-line            {stroke: #F0F0F0; shape-rendering: crispEdges}
-    .filled               {fill: #181818; stroke: none;}
+    .filled               {fill: #171717; stroke: none;}
     text.terminal         {font-family: Verdana, Sans-serif;
                             font-size: 12px;
                             fill: #F0F0F0;
@@ -22,11 +22,11 @@
                             fill: #F0F0F0;
                             font-weight: normal;
                           }
-    rect, circle, polygon {fill: #181818; stroke: #181818;}
-    rect.terminal         {fill: #444444; stroke: #181818; stroke-width: 1;}
-    rect.nonterminal      {fill: #555555; stroke: #181818; stroke-width: 1;}
+    rect, circle, polygon {fill: #171717; stroke: #171717;}
+    rect.terminal         {fill: #222222; stroke: #171717; stroke-width: 1;}
+    rect.nonterminal      {fill: #2A2A2A; stroke: #171717; stroke-width: 1;}
     rect.text             {fill: none; stroke: none;}
-    polygon.regexp        {fill: #5D5D5D; stroke: #181818; stroke-width: 1;}
+    polygon.regexp        {fill: #2F2F2F; stroke: #171717; stroke-width: 1;}
   </style>
    </defs>
    <polygon points="9 17 1 13 1 21"/>
@@ -40,29 +40,29 @@
          rx="10"/>
    <text class="terminal" x="39" y="21">--fileoutput</text>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
-      xlink:href="#FileName.parquet"
-      xlink:title="FileName.parquet">
-      <rect x="149" y="3" width="132" height="32"/>
-      <rect x="147" y="1" width="132" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="157" y="21">FileName.parquet</text>
+      xlink:href="#FileName"
+      xlink:title="FileName">
+      <rect x="149" y="3" width="78" height="32"/>
+      <rect x="147" y="1" width="78" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="157" y="21">FileName</text>
    </a>
-   <rect x="301" y="3" width="92" height="32" rx="10"/>
-   <rect x="299"
+   <rect x="247" y="3" width="92" height="32" rx="10"/>
+   <rect x="245"
          y="1"
          width="92"
          height="32"
          class="terminal"
          rx="10"/>
-   <text class="terminal" x="309" y="21">--directory</text>
+   <text class="terminal" x="255" y="21">--directory</text>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
-      xlink:href="#OutputDirectory"
-      xlink:title="OutputDirectory">
-      <rect x="413" y="3" width="120" height="32"/>
-      <rect x="411" y="1" width="120" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="421" y="21">OutputDirectory</text>
+      xlink:href="#Directory"
+      xlink:title="Directory">
+      <rect x="359" y="3" width="76" height="32"/>
+      <rect x="357" y="1" width="76" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="367" y="21">Directory</text>
    </a>
    <path class="line"
-         d="m17 17 h2 m0 0 h10 m98 0 h10 m0 0 h10 m132 0 h10 m0 0 h10 m92 0 h10 m0 0 h10 m120 0 h10 m3 0 h-3"/>
-   <polygon points="551 17 559 13 559 21"/>
-   <polygon points="551 17 543 13 543 21"/>
+         d="m17 17 h2 m0 0 h10 m98 0 h10 m0 0 h10 m78 0 h10 m0 0 h10 m92 0 h10 m0 0 h10 m76 0 h10 m3 0 h-3"/>
+   <polygon points="453 17 461 13 461 21"/>
+   <polygon points="453 17 445 13 445 21"/>
 </svg>

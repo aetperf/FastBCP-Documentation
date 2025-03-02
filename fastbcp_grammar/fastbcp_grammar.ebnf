@@ -9,8 +9,8 @@ FastBCPOptions ::=
     ConnectionParameters
     SourceInfos
     (OutputInfoCSV FormatCSVOptions | OutputInfoParquet | OutputInfoBinary)
-    AdvancedParameters
-    LogParameters
+    (|AdvancedParameters)
+    (|LogParameters)
 
 
 ConnectionType ::=
@@ -29,30 +29,36 @@ ConnectionType ::=
     )
 
 ConnectionParameters ::=
+    (
     ( 
       "--server"
       ("Host" | "Host:Port" | "Host\InstanceName" | "Host:Port/TNSService" ) 
+      (|"--provider" OLEDBProvider)
+      |("--dsn" DSNName)
+        )
       ( "--trusted"  | ( "--user" "Username" "--password" "Password" ))
       "--database" "DatabaseName"
     )
+    
   | ( "--connectionstring" "ConnectString" )
 
 
 SourceInfos ::=
-    ( "--fileinput" InputFilePath | "--query" Query |( "--sourceschema" SchemaName "--sourcetable" TableName))
+    (( "--sourceschema" SchemaName "--sourcetable" TableName) | "--query" Query | "--fileinput" InputFilePath)
 
 
 OutputInfoCSV ::=
      "--fileoutput" (FileName.csv|FileName.tsv) 
      "--directory" OutputDirectory
+     (|"--timestamped")
+     (|"--encoding" Encoding)
 
 FormatCSVOptions ::=
      (|"--delimiter" Delimiter)
      (|"--dateformat" DateFormat)
-     (|"--encoding" Encoding)
      (|"--quotes" ( "true" | "false" ))
      (|"--noheader")
-     (|"--timestamped")
+     (|("--boolformat" ("automatic"|"1/0"|"true/false"|"t/f")))
 
 
 OutputInfoParquet ::=
