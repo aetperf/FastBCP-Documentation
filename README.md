@@ -168,6 +168,27 @@ Will add a timestamp to the output file name if the switch is used
 The characterset encoding of the output file. Default is `UTF-8`
 
 
+## CSV Data Formatting
+
+### Delimiter (`-d` or `--delimiter`)
+The character(s) that will be used as field delimiter
+
+### Use Quotes Identifier (`-t` or `--quotes`)
+Add quotes "" for string fields (will escape " by \ if found in the data field)
+value can be `true` or `false`
+
+### Date Format (`-f` or `--dateforma`)
+Date format like "yyyy-MM-dd HH:mm:ss"
+
+### Decimal Separator (`-n` or `--decimalseparator`)
+Use for specify the decimal separator (can be `,` or `.`)
+
+### No Header (`-h` or `--noheader` switch)
+If you don't want to have a header in the output file, use the -h or --noheader switch
+
+### Boolean Format (`-b` or `--boolformat`)
+How boolean are formatted (`true/false`, `t/f` or `1/0`)
+
 ## Advanced Parameters 
 
 ### Distribution Method (`-m` or `--method`)
@@ -204,28 +225,6 @@ If the dop is less than 0 it will be computed as the number of cores/(abs(dop)).
 
 ### Merge (`-M` or `--merge`)
 You can specify if the "temporary" files generated for the parallel export should be merge to the final ouput file and deleted or if you prefer to keep the distributed files without merging them (faster export and later faster import).
-
-## Data Formatting
-
-### Delimiter (`-d` or `--delimiter`)
-The character(s) that will be used as field delimiter
-
-### Use Quotes Identifier (`-t` or `--quotes`)
-Add quotes "" for string fields (will escape " by \ if found in the data field)
-value can be `true` or `false`
-
-### Date Format (`-f` or `--dateforma`)
-Date format like "yyyy-MM-dd HH:mm:ss"
-
-### Decimal Separator (`-n` or `--decimalseparator`)
-Use for specify the decimal separator (can be `,` or `.`)
-
-### No Header (`-h` or `--noheader` switch)
-If you don't want to have a header in the output file, use the -h or --noheader switch
-
-### Boolean Format (`-b` or `--boolformat`)
-How boolean are formatted (`true/false`, `t/f` or `1/0`)
-
 
 # Logging 
 ## Parameter Logs targets using FastBCP_settings.json
