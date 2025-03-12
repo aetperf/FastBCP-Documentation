@@ -1,4 +1,5 @@
 ﻿
+```powershell	
 $query="SELECT top 10000 * FROM FASTExportData.dbo.TEST_71_1M_12m"
 $target="localhost"
 
@@ -1289,3 +1290,4 @@ $query="SELECT * FROM SOC1.ADR"
 --encoding "UTF-8" `
 --method "None" `
 
+```

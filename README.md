@@ -364,5 +364,5 @@ You can have a lookp on the live [FastBCP Performance dashboard](https://public.
 
 
 
-You can find more exemples in the [samples.ps1](samples.ps1) file
+You can find more exemples in the [samples.ps1](samples.ps1.md) file
 
