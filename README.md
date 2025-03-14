@@ -76,9 +76,30 @@ You can use the FastBCP Wizard to generate a FastBCP command line : [FastBCP Wiz
 ![FormatCSVOptions](diagram/FormatCSVOptions.svg)
 
 
-### OutputInfoParquet:
+**OutputInfoJSON:**
+
+![OutputInfoJSON](diagram/OutputInfoJSON.svg)
+
+
+**FormatJSONOptions:**
+
+![FormatJSONOptions](diagram/FormatJSONOptions.svg)
+
+
+**OutputInfoParquet:**
 
 ![OutputInfoParquet](diagram/OutputInfoParquet.svg)
+
+
+**OutputInfoXLSX:**
+
+![OutputInfoXLSX](diagram/OutputInfoXLSX.svg)
+
+
+
+**FormatXLSXOptions:**
+
+![FormatXLSXOptions](diagram/FormatXLSXOptions.svg)
 
 
 ### OutputInfoBinary:
