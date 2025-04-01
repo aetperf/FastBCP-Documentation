@@ -22,10 +22,29 @@ SAP Hana | ✅ | ✅ | ❌
 Teradata | ✅ | ✅ | ❌
 
 ## Supported OS
-Linked to the .Net 8 compatibility itself.
 
-See [dotnet 8 compatibility](https://github.com/dotnet/core/blob/main/release-notes/8.0/supported-os.md)
+### Linux
 
+| OS                            | Versions                    | Architectures         | 
+| ----------------------------- | --------------------------- | --------------------- | 
+| Alpine                        | 3.21, 3.20, 3.19, 3.18      | Arm64, x64            | 
+| Azure Linux                   | 3.0                         | Arm64, x64            | 
+| CentOS Stream                 | 10, 9                       | Arm64, x64            | 
+| Debian                        | 12                          | Arm64, x64            | 
+| Fedora                        | 41, 40                      | Arm64, x64            | 
+| openSUSE Leap                 | 15.6                        | Arm64, x64            | 
+| Red Hat Enterprise Linux      | 10, 9, 8                    | Arm64, x64            | 
+| SUSE Enterprise Linux         | 15.6                        | Arm64, x64            | 
+| Ubuntu                        | 24.10, 24.04, 22.04, 20.04  | Arm64, x64            | 
+
+### Windows
+
+| OS                            | Versions                    | Architectures         | 
+| ----------------------------- | --------------------------- | --------------------- | 
+| Nano Server                   | 2025, 2022, 2019            | x64                   |
+| Windows                       | 11 24H2 (IoT), 11 24H2 (E), 11 24H2, 11 23H2, 11 22H2 (E), 10 22H2, 10 21H2 (E), 10 21H2 (IoT), 10 1809 (E), 10 1607 (E) | x64 |
+| Windows Server                | 2025, 23H2, 2022, 2019, 2016, 2012-R2, 2012 | x64 |  |
+| Windows Server Core           | 2025, 2022, 2019, 2016, 2012-R2, 2012 | x64     |
 
 
 
