@@ -44,7 +44,7 @@ ConnectionParameters ::=
 
 
 SourceInfos ::=
-    (( "--sourceschema" SchemaName "--sourcetable" TableName) | "--query" Query | "--fileinput" InputFilePath)
+    (( "--sourceschema" SchemaName "--sourcetable" TableName) | ("--query" Query | ( "--query" Query "--sourceschema" SchemaName "--sourcetable" TableName)) | ("--fileinput" InputFilePath | ("--fileinput" InputFilePath "--sourceschema" SchemaName "--sourcetable" TableName)))
 
 
 OutputInfoCSV ::=
@@ -95,4 +95,3 @@ AdvancedParameters ::=
 LogParameters ::=
     (|"--runid" RunId)
     (|"--settingsfile" SettingsFile)
-
