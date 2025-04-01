@@ -21,6 +21,12 @@ SQL Server | ✅ | ✅ | ✅
 SAP Hana | ✅ | ✅ | ❌
 Teradata | ✅ | ✅ | ❌
 
+## Supported OS
+Linked to the .Net 8 compatibility itself.
+
+See [dotnet 8 compatibility](https://github.com/dotnet/core/blob/main/release-notes/8.0/supported-os.md)
+
+
 
 
 ## Quick Start : installation and wizard
