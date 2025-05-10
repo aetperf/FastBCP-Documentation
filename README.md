@@ -273,6 +273,9 @@ If the dop is less than 0 it will be computed as the number of cores/(abs(dop)).
 You can specify if the "temporary" files generated for the parallel export should be merge to the final ouput file and deleted or if you prefer to keep the distributed files without merging them (faster export and later faster import).
 **Warning** : Current version allow valid merge for CSV and Parquet only.
 
+### License (`--license`)
+By defaulf FastBCP will try to use the license file named FastBCP.lic in the same directory as FastBCP. You can specify a custom license file using the `--license` parameter to define another filepath or even an http endpoint to retrieve the license file.
+
 # Logging 
 ## Parameter Logs targets using FastBCP_settings.json
 FastBCP can log informations in 3 modes :

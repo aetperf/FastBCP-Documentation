@@ -10,8 +10,8 @@ FastBCPOptions ::=
     SourceInfos
     (OutputInfoCSV (|FormatCSVOptions) | OutputInfoJSON (|FormatJSONOptions) | OutputInfoXLSX (|FormatXLSXOptions) | OutputInfoParquet | OutputInfoBinary)
     (|AdvancedParameters)
-    (|LogParameters)
-
+    (|LogParameters)    
+    (|LicenceParameters)
 
 ConnectionType ::=
     ( "clickhouse"
@@ -95,3 +95,7 @@ AdvancedParameters ::=
 LogParameters ::=
     (|"--runid" RunId)
     (|"--settingsfile" SettingsFile)
+
+LicenceParameters ::=
+    (|"--licence" (Licencefile|Licenceurl))
+
