@@ -7,629 +7,811 @@
 </head>
 <body>
 
-<h1>FastBCP Command Builder</h1> 
-<h2>Set parameters and collect the built command line at the bottom of the page</h2>
+    <h1>FastTransfer Command Line Wizard</h1>
+    <h2>Set parameters and collect the built command line at the bottom of the page</h2>
 
-<!-- Platform (Windows or Linux) -->
-<label for="platform">Platform:</label>
-<select id="platform" onchange="updateCommand()">
-  <option value="windows">Windows (FastBCP.exe)</option>
-  <option value="linux">Linux (FastBCP)</option>
-</select>
-
-<!-- ==================== CONNECTION PARAMETERS SECTION ==================== -->
-<div class="section">
-  <h2>Connection Parameters</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Short Description</th>
-        <th>Value</th>
-        <th>Parameter</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- connectiontype -->
-      <tr>
-        <td>Connection Type *</td>
-        <td>
-          <select id="connectiontype" onchange="onConnectionTypeChange(); updateCommand()">
-            <option value="">-- choose --</option>
-            <option value="clickhouse">clickhouse</option>
-            <option value="hana">hana</option>
-            <option value="odbc">odbc</option>
-            <option value="oledb">oledb</option>
-            <option value="mssql">mssql</option>
-            <option value="mysql">mysql</option>
-            <option value="msoledbsql">msoledbsql</option>
-            <option value="nzoledb">netezza (nzoledb)</option>
-            <option value="nzsql">netezza (nzsql)</option>
-            <option value="oraodp">oracle (oraodp)</option>
-            <option value="pgcopy">postgresql (pgcopy)</option>
-            <option value="pgsql">postgresql (pgsql)</option>            
-            <option value="teradata">teradata</option>
-            <!-- more if needed -->
-          </select>
-        </td>
-        <td>--connectiontype</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- dsn (only if connectiontype == odbc) -->
-      <tr id="tr-dsn">
-        <td>ODBC DSN</td>
-        <td><input type="text" id="dsn" oninput="updateCommand()"></td>
-        <td>--dsn</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- provider (only if connectiontype == oledb) -->
-      <tr id="tr-provider">
-        <td>OLE DB Provider</td>
-        <td><input type="text" id="provider" oninput="updateCommand()"></td>
-        <td>--provider</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- server (for other connection types) -->
-      <tr id="tr-server">
-        <td>Server</td>
-        <td><input type="text" id="server" oninput="updateCommand()"></td>
-        <td>--server</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- sourceconnectstring -->
-      <tr>
-        <td>Conn. String</td>
-        <td><input type="text" id="sourceconnectstring" oninput="updateCommand()"></td>
-        <td>--sourceconnectstring</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- trusted -->
-      <tr>
-        <td>Trusted Auth?</td>
-        <td><input type="checkbox" id="trusted" onchange="updateCommand()"></td>
-        <td>--trusted</td>
-        <td>false</td>
-      </tr>
-
-      <!-- user -->
-      <tr>
-        <td>Username</td>
-        <td><input type="text" id="user" oninput="updateCommand()"></td>
-        <td>--user</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- password -->
-      <tr>
-        <td>Password</td>
-        <td><input type="text" id="password" oninput="updateCommand()"></td>
-        <td>--password</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- database -->
-      <tr>
-        <td>Database *</td>
-        <td><input type="text" id="database" oninput="updateCommand()"></td>
-        <td>--database</td>
-        <td>[none]</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- ==================== SOURCE QUERY / TABLE SECTION ==================== -->
-<div class="section">
-  <h2>Source Query/Table</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Short Description</th>
-        <th>Value</th>
-        <th>Parameter</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- fileinput -->
-      <tr>
-        <td>File Input</td>
-        <td><input type="text" id="fileinput" onchange="updateCommand()"></td>
-        <td>--fileinput</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- query -->
-      <tr>
-        <td>SQL Query</td>
-        <td><input type="text" id="query" oninput="updateCommand()"></td>
-        <td>--query</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- sourceschema -->
-      <tr>
-        <td>Source Schema</td>
-        <td><input type="text" id="sourceschema" oninput="updateCommand()"></td>
-        <td>--sourceschema</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- sourcetable -->
-      <tr>
-        <td>Source Table</td>
-        <td><input type="text" id="sourcetable" oninput="updateCommand()"></td>
-        <td>--sourcetable</td>
-        <td>[none]</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- ==================== OUTPUT OPTIONS SECTION ==================== -->
-<div class="section">
-  <h2>Output Options</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Short Description</th>
-        <th>Value</th>
-        <th>Parameter</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- fileoutput -->
-      <tr>
-        <td>File Output * (extension will define the filetype : csv , json, parquet, xlsx or binary)</td>
-        <td><input type="text" id="fileoutput" onchange="updateCommand()"></td>
-        <td>--fileoutput</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- directory -->
-      <tr>
-        <td>Output Directory *</td>
-        <td><input type="text" id="directory" oninput="updateCommand()"></td>
-        <td>--directory</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- timestamped -->
-      <tr>
-        <td>Timestamped ?</td>
-        <td><input type="checkbox" id="timestamped" onchange="updateCommand()"></td>
-        <td>--timestamped</td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
-
- <!-- ==================== FORMAT OPTIONS SECTION ==================== -->
-<div class="section">
-  <h2>Format Options</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Short Description</th>
-        <th>Value</th>
-        <th>Parameter</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody> 
-
-      <!-- delimiter -->
-      <tr>
-        <td>Delimiter</td>
-        <td><input type="text" id="delimiter" value="" oninput="updateCommand()"></td>
-        <td>--delimiter</td>
-        <td>|</td>
-      </tr>
-
-      <!-- quotes -->
-      <tr>
-        <td>Use Quotes ?</td>
-        <td><input type="checkbox" id="quotes" onchange="updateCommand()"></td>
-        <td>--quotes</td>
-        <td>false</td>
-      </tr>
-
-      <!-- dateformat -->
-      <tr>
-        <td>Date and DateTime Format</td>
-        <td><input type="text" id="dateformat" value="yyyy-MM-dd HH:mm:ss" oninput="updateCommand()"></td>
-        <td>--dateformat</td>
-        <td>yyyy-MM-dd</td>
-      </tr>
-
-      <!-- decimalseparator -->
-      <tr>
-      <td>Decimal Separator</td>
-      <td><input type="text" id="decimalseparator" value="." oninput="updateCommand()"></td>
-      <td>--decimalseparator</td>
-      <td>.</td>
-    </tr>
-
-    <!-- boolformat -->
-    <tr>
-      <td>Boolean Format</td>
-      <td>
-        <select id="boolformat" onchange="updateCommand()">
-          <option value="">-- choose --</option>
-          <option value="automatic">automatic</option>
-          <option value="true/false">true/false</option>
-          <option value="1/0">1/0</option>
-          <option value="t/f">t/f</option>
-        </select>
-      </td>
-      <td>--boolformat</td>
-      <td>automatic</td>
-    </tr>
-
-      <!-- encoding -->
-      <tr>
-        <td>Encoding</td>
-        <td><input type="text" id="encoding" value="" oninput="updateCommand()"></td>
-        <td>--encoding</td>
-        <td>UTF-8</td>
-      </tr>
-
-  
-
-      <!-- noheader -->
-      <tr>
-        <td>Remove Header?</td>
-        <td><input type="checkbox" id="noheader" onchange="updateCommand()"></td>
-        <td>--noheader</td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- ==================== ADVANCED PARAMETERS SECTION ==================== -->
-<div class="section">
-  <h2>Advanced Parameters</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Short Description</th>
-        <th>Value</th>
-        <th>Parameter</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
- 
-
-      <!-- method -->
-      <tr>
-        <td>Parallel Method</td>
-        <td>
-          <select id="method" onchange="onMethodChange(); updateCommand()">
-            <option value="None">None</option>
-            <option value="Random">Random</option>
-            <option value="DataDriven">DataDriven</option>
-            <option value="Ctid">Ctid</option>
-            <option value="Rowid">Rowid</option>
-            <option value="RangeId">RangeId</option>
-            <option value="Ntile">Ntile</option>
-          </select>
-        </td>
-        <td>--method</td>
-        <td>None</td>
-      </tr>
-
-      <!-- paralleldegree (only if method != None) -->
-      <tr id="tr-paralleldegree">
-        <td>Parallel Degree</td>
-        <td><input type="number" id="paralleldegree" value="-2" min="-32" max="1024" oninput="updateCommand()"></td>
-        <td>--paralleldegree</td>
-        <td>-2</td>
-      </tr>
-
-      <!-- distributekeycolumn -->
-      <tr id="tr-distributekeycolumn">
-        <td>Distribute Key Column</td>
-        <td><input type="text" id="distributekeycolumn" oninput="updateCommand()"></td>
-        <td>--distributekeycolumn</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- merge -->
-      <tr>
-        <td>Merge Temp Files</td>
-        <td><input type="checkbox" id="merge" checked onchange="updateCommand()"></td>
-        <td>--merge</td>
-        <td>true</td>
-      </tr>
+    <!-- Platform (Windows or Linux) -->
+    <label for="platform">Platform:</label>
+    <select id="platform" onchange="updateCommand()">
+        <option value="windows">Windows (FastTransfer.exe)</option>
+        <option value="linux">Linux (FastTransfer)</option>
+    </select>
 
 
 
-      <!-- runid -->
-      <tr>
-        <td>Run ID</td>
-        <td><input type="text" id="runid" oninput="updateCommand()"></td>
-        <td>--runid</td>
-        <td>[none]</td>
-      </tr>
+    <!--  =================== SOURCE SECTION  =================== -->
+    <div class="section">
+        <h2>Source Configuration</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Description</th>
+                    <th>Value</th>
+                    <th>Parameter</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- sourceconnectiontype -->
+                <tr>
+                    <td>Source Conn. Type</td>
+                    <td>
+                        <select id="sourceconnectiontype" onchange="onSourceTypeChange(); updateCommand()">
+                            <option value="">-- choose --</option>
+                            <option value="clickhouse">clickhouse</option>
+                            <option value="duckdb">duckdb</option>
+                            <option value="duckdbstream">duckdbstream</option>
+                            <option value="hana">hana</option>
+                            <option value="mssql">mssql</option>
+                            <option value="msoledbsql">msoledbsql</option>
+                            <option value="mysql">mysql</option>
+                            <option value="nzoledb">nzoledb</option>
+                            <option value="nzsql">nzsql</option>
+                            <option value="odbc">odbc</option>
+                            <option value="oledb">oledb</option>
+                            <option value="oraodp">oraodp</option>
+                            <option value="pgcopy">pgcopy</option>
+                            <option value="pgsql">pgsql</option>
+                            <option value="teradata">teradata</option>
+                        </select>
+                    </td>
+                    <td>--sourceconnectiontype</td>
+                    <td>[none]</td>
+                </tr>
 
-      <!-- settingsfile -->
-      <tr>
-        <td>Settings File</td>
-        <td><input type="text" id="settingsfile" value="FastBCP_Settings.json" oninput="updateCommand()"></td>
-        <td>--settingsfile</td>
-        <td>FastBCP_Settings.json</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+                <!-- sourceconnectstring vs (sourcedsn, sourceprovider, sourceserver, sourceuser, sourcepassword, sourcetrusted) -->
+                <tr id="tr-sourceconnectstring">
+                    <td>Source Connect String</td>
+                    <td><input type="text" id="sourceconnectstring" oninput="onSourceConnectstringChange(); updateCommand()"></td>
+                    <td>--sourceconnectstring</td>
+                    <td>[none]</td>
+                </tr>
 
-<!-- BUTTONS & RESULT -->
-<button type="button" onclick="copyCommand()">Copy Command</button>
-<button type="button" onclick="updateCommand()">Refresh</button>
+                <!-- sourcedsn (only if not using sourceconnectstring) -->
+                <tr id="tr-sourcedsn">
+                    <td>ODBC DSN</td>
+                    <td><input type="text" id="sourcedsn" oninput="updateCommand()"></td>
+                    <td>--sourcedsn</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- sourceprovider (only if not using sourceconnectstring nor sourcedsn) -->
+                <tr id="tr-sourceprovider">
+                    <td>OleDB Provider</td>
+                    <td><input type="text" id="sourceprovider" oninput="updateCommand()"></td>
+                    <td>--sourceprovider</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- sourceserver (only if not using sourceconnectstring nor sourcedsn) -->
+                <tr id="tr-sourceserver">
+                    <td>Source Server</td>
+                    <td><input type="text" id="sourceserver" oninput="updateCommand()"></td>
+                    <td>--sourceserver</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- sourcetrusted vs (sourceuser, sourcepassword) -->
+                <tr id="tr-sourcetrusted">
+                    <td>Source Trusted Auth?</td>
+                    <td><input type="checkbox" id="sourcetrusted" onchange="onSourceTrustedChange(); updateCommand()"></td>
+                    <td>--sourcetrusted</td>
+                    <td>false</td>
+                </tr>
+
+                <tr id="tr-sourceuser">
+                    <td>Source User</td>
+                    <td><input type="text" id="sourceuser" oninput="updateCommand()"></td>
+                    <td>--sourceuser</td>
+                    <td>[none]</td>
+                </tr>
+
+                <tr id="tr-sourcepassword">
+                    <td>Source Password</td>
+                    <td><input type="password" id="sourcepassword" oninput="updateCommand()"></td>
+                    <td>--sourcepassword</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- sourcedatabase -->
+                <tr id="tr-sourcedatabase">
+                    <td>Source Database</td>
+                    <td><input type="text" id="sourcedatabase" oninput="updateCommand()"></td>
+                    <td>--sourcedatabase</td>
+                    <td>[none]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--  =================== SOURCE QUERY/TABLE SECTION  =================== -->
+    <div class="section">
+        <h2>Source Query / Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Description</th>
+                    <th>Value</th>
+                    <th>Parameter</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- sourceschema -->
+                <tr id="tr-sourceschema">
+                    <td>Source Schema</td>
+                    <td><input type="text" id="sourceschema" oninput="updateCommand()"></td>
+                    <td>--sourceschema</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- sourcetable -->
+                <tr id="tr-sourcetable">
+                    <td>Source Table</td>
+                    <td><input type="text" id="sourcetable" oninput="updateCommand()"></td>
+                    <td>--sourcetable</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- query vs fileinput (one or none used) -->
+                <tr id="tr-query">
+                    <td>SQL Query</td>
+                    <td><input type="text" id="query" oninput="onQueryChange(); updateCommand()"></td>
+                    <td>--query</td>
+                    <td>[none]</td>
+                </tr>
+
+                <tr id="tr-fileinput">
+                    <td>File Input</td>
+                    <td><input type="text" id="fileinput" oninput="onFileInputChange(); updateCommand()"></td>
+                    <td>--fileinput</td>
+                    <td>[none]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--  =================== TARGET SECTION  =================== -->
+    <div class="section">
+        <h2>Target Configuration</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Description</th>
+                    <th>Value</th>
+                    <th>Parameter</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- targetconnectiontype -->
+                <tr>
+                    <td>Target Conn. Type</td>
+                    <td>
+                        <select id="targetconnectiontype" onchange="updateCommand()">
+                            <option value="">-- choose --</option>
+                            <option value="clickhousebulk">clickhousebulk</option>
+                            <option value="duckdb">duckdb</option>
+                            <option value="hanabulk">hanabulk</option>
+                            <option value="msbulk">msbulk</option>
+                            <option value="mysqlbulk">mysqlbulk</option>
+                            <option value="nzbulk">nzbulk</option>
+                            <option value="orabulk">orabulk</option>
+                            <option value="oradirect">oradirect</option>
+                            <option value="pgcopy">pgcopy</option>
+                            <option value="pgsql">pgsql</option>
+                        </select>
+                    </td>
+                    <td>--targetconnectiontype</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- targetconnectstring vs (targetserver, targetuser, targetpassword, targettrusted) -->
+                <tr id="tr-targetconnectstring">
+                    <td>Target Connect String</td>
+                    <td><input type="text" id="targetconnectstring" oninput="onTargetConnectstringChange(); updateCommand()"></td>
+                    <td>--targetconnectstring</td>
+                    <td>[none]</td>
+                </tr>
+
+                <tr id="tr-targetserver">
+                    <td>Target Server</td>
+                    <td><input type="text" id="targetserver" oninput="updateCommand()"></td>
+                    <td>--targetserver</td>
+                    <td>[none]</td>
+                </tr>
+
+                <tr id="tr-targettrusted">
+                    <td>Target Trusted Auth?</td>
+                    <td><input type="checkbox" id="targettrusted" onchange="onTargetTrustedChange(); updateCommand()"></td>
+                    <td>--targettrusted</td>
+                    <td>false</td>
+                </tr>
+
+                <tr id="tr-targetuser">
+                    <td>Target User</td>
+                    <td><input type="text" id="targetuser" oninput="updateCommand()"></td>
+                    <td>--targetuser</td>
+                    <td>[none]</td>
+                </tr>
+
+                <tr id="tr-targetpassword">
+                    <td>Target Password</td>
+                    <td><input type="password" id="targetpassword" oninput="updateCommand()"></td>
+                    <td>--targetpassword</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- targetdatabase -->
+                <tr id="tr-targetdatabase">
+                    <td>Target Database</td>
+                    <td><input type="text" id="targetdatabase" oninput="updateCommand()"></td>
+                    <td>--targetdatabase</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- targetschema -->
+                <tr>
+                    <td>Target Schema</td>
+                    <td><input type="text" id="targetschema" oninput="updateCommand()"></td>
+                    <td>--targetschema</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- targettable -->
+                <tr>
+                    <td>Target Table</td>
+                    <td><input type="text" id="targettable" oninput="updateCommand()"></td>
+                    <td>--targettable</td>
+                    <td>[none]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--  =================== ADVANCED / PARALLEL SECTION  =================== -->
+    <div class="section">
+        <h2>Advanced / Parallel</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Description</th>
+                    <th>Value</th>
+                    <th>Parameter</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- degree -->
+                <tr id="tr-degree">
+                    <td>Parallel Degree</td>
+                    <td><input type="number" id="degree" value="-2" min="-32" max="1024" oninput="updateCommand()"></td>
+                    <td>--degree</td>
+                    <td>-2</td>
+                </tr>
+
+                <!-- method -->
+                <tr>
+                    <td>Method</td>
+                    <td>
+                        <select id="method" onchange="onMethodChange(); updateCommand()">
+                            <option value="None">None</option>
+                            <option value="Ctid">Ctid (PostgreSQL Only)</option>
+                            <option value="DataDriven">DataDriven</option>
+                            <option value="Ntile">Ntile</option>
+                            <option value="NZDataSlice">NZDataSlice (Netezza Only)</option>
+                            <option value="Random">Random</option>
+                            <option value="RangeId">RangeId</option>
+                            <option value="Rowid">Rowid (Oracle Only)</option>
+                        </select>
+                    </td>
+                    <td>--method</td>
+                    <td>None</td>
+                </tr>
+
+                <!-- distributekeycolumn -->
+                <tr id="tr-distributekeycolumn">
+                    <td>Distribute Key Column</td>
+                    <td><input type="text" id="distributekeycolumn" oninput="updateCommand()"></td>
+                    <td>--distributekeycolumn</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- datadrivenquery -->
+                <tr id="tr-datadrivenquery">
+                    <td>DataDriven Query (optionnal)</td>
+                    <td><input type="text" id="datadrivenquery" oninput="updateCommand()"></td>
+                    <td>--datadrivenquery</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- loadmode -->
+                <tr>
+                    <td>Load Mode</td>
+                    <td>
+                        <select id="loadmode" onchange="updateCommand()">
+                            <option value="Append">Append</option>
+                            <option value="Truncate">Truncate</option>
+                            <!-- <option value="Replace">Replace</option> -->
+                        </select>
+                    </td>
+                    <td>--loadmode</td>
+                    <td>Append</td>
+                </tr>
+
+                <!-- mapmethod -->
+                <tr>
+                    <td>Column Map Method</td>
+                    <td>
+                        <select id="mapmethod" onchange="updateCommand()">
+                            <option value="Position">Position</option>
+                            <option value="Name">Name</option>
+                        </select>
+                    </td>
+                    <td>--mapmethod</td>
+                    <td>Position</td>
+                </tr>
+
+                <!-- batchsize -->
+                <tr>
+                    <td>Batch Size</td>
+                    <td><input type="number" id="batchsize" value="1048576" oninput="updateCommand()"></td>
+                    <td>--batchsize</td>
+                    <td>1048576</td>
+                </tr>
+
+                <!-- useworktables -->
+                <tr>
+                    <td>Use Work Tables?</td>
+                    <td><input type="checkbox" id="useworktables" onchange="updateCommand()"></td>
+                    <td>--useworktables</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--  =================== LOGGING SECTION  =================== -->
+        <div class="section">
+            <h2>Logging</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Short Description</th>
+                        <th>Value</th>
+                        <th>Parameter</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- runid -->
+                    <tr>
+                        <td>Run ID</td>
+                        <td><input type="text" id="runid" oninput="updateCommand()"></td>
+                        <td>--runid</td>
+                        <td>[none]</td>
+                    </tr>
+
+                    <!-- settingsfile -->
+                    <tr>
+                        <td>Settings File</td>
+                        <td><input type="text" id="settingsfile" oninput="updateCommand()"></td>
+                        <td>--settingsfile</td>
+                        <td>[none]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--  =================== LICENCE SECTION  =================== -->
+        <div class="section">
+            <h2>Licence</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Short Description</th>
+                        <th>Value</th>
+                        <th>Parameter</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- licence -->
+                    <tr>
+                        <td>Licence</td>
+                        <td><input type="text" id="licence" oninput="updateCommand()"></td>
+                        <td>--licence</td>
+                        <td>[none] but use FastBCP.lic if not provide</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!--  =================== COMMAND OUTPUT  =================== -->
+        <button type="button" onclick="copyCommand()">Copy Command</button>
+        <button type="button" onclick="updateCommand()">Refresh</button>
 <pre id="result"></pre>
 
-<script>
-// --- Show/Hide logic based on connection type ---
-function onConnectionTypeChange() {
-  const ctype = document.getElementById('connectiontype').value;
+        <script>
+            /* --- Show/hide logic for partial group constraints, etc. --- */
 
-  // If ctype = "odbc" => show tr-dsn, hide tr-provider, hide tr-server
-  // If ctype = "oledb" => show tr-provider, hide tr-dsn, hide tr-server
-  // Else => show tr-server, hide tr-dsn, hide tr-provider
+            // If sourceconnectstring is used => hide DSN/provider/server/trusted
+            function onSourceConnectstringChange() {
+                const scs = document.getElementById('sourceconnectstring').value.trim();
+                if (scs) {
+                    document.getElementById('tr-sourcedsn').style.display = 'none';
+                    document.getElementById('tr-sourceprovider').style.display = 'none';
+                    document.getElementById('tr-sourceserver').style.display = 'none';
+                    document.getElementById('tr-sourcetrusted').style.display = 'none';
+                    document.getElementById('tr-sourceuser').style.display = 'none';
+                    document.getElementById('tr-sourcepassword').style.display = 'none';
+                    document.getElementById('tr-sourcedatabase').style.display = 'none';
+                } else {
+                    // Show them again
+                    document.getElementById('tr-sourcedsn').style.display = 'table-row';
+                    document.getElementById('tr-sourceprovider').style.display = 'table-row';
+                    document.getElementById('tr-sourceserver').style.display = 'table-row';
+                    document.getElementById('tr-sourcetrusted').style.display = 'table-row';
+                    document.getElementById('tr-sourcedatabase').style.display = 'table-row';
+                    // And we must check if trusted is toggled
+                    onSourceTrustedChange();
+                }
+            }
 
-  if (ctype === 'odbc') {
-    document.getElementById('tr-dsn').style.display = 'table-row';
-    document.getElementById('tr-provider').style.display = 'none';
-    document.getElementById('tr-server').style.display = 'none';
-  } 
-  else if (ctype === 'oledb') {
-    document.getElementById('tr-dsn').style.display = 'none';
-    document.getElementById('tr-provider').style.display = 'table-row';
-    document.getElementById('tr-server').style.display = 'table-row';
-  }
-  else {
-    // e.g. mssql, pgsql, mysql, ...
-    document.getElementById('tr-dsn').style.display = 'none';
-    document.getElementById('tr-provider').style.display = 'none';
-    document.getElementById('tr-server').style.display = 'table-row';
-  }
-}
+            // If sourcetrusted => hide user/password
+            function onSourceTrustedChange() {
+                const trusted = document.getElementById('sourcetrusted').checked;
+                if (trusted) {
+                    document.getElementById('tr-sourceuser').style.display = 'none';
+                    document.getElementById('tr-sourcepassword').style.display = 'none';
+                } else {
+                    document.getElementById('tr-sourceuser').style.display = 'table-row';
+                    document.getElementById('tr-sourcepassword').style.display = 'table-row';
+                }
+            }
 
-// --- Show/Hide logic based on method ---
-function onMethodChange() {
-  const method = document.getElementById('method').value;
-  // If method == "None", hide paralleldegree
-  if (method === 'None') {
-    document.getElementById('tr-paralleldegree').style.display = 'none';
-  } else {
-    document.getElementById('tr-paralleldegree').style.display = 'table-row';
-  }
-    // Hide distributekeycolumn if the method is ctid or rowid
-  if (method === 'Ctid' || method === 'Rowid') {
-    document.getElementById('tr-distributekeycolumn').style.display = 'none';
-  } else {
-    document.getElementById('tr-distributekeycolumn').style.display = 'table-row';
-  }
-}
+            // If query => hide fileinput (group f,q)
+            function onQueryChange() {
+                const q = document.getElementById('query').value.trim();
+                if (q) {
+                    document.getElementById('fileinput').value = "";
+                    // maybe hide the row or just clear?
+                }
+            }
 
-// --- Build the final command ---
-function updateCommand() {
-  const platform = document.getElementById('platform').value;
-  let baseCmd = (platform === 'windows') ? '.\\FastBCP.exe' : './FastBCP';
-  let args = [];
+            // If fileinput => clear query
+            function onFileInputChange() {
+                const f = document.getElementById('fileinput').value.trim();
+                if (f) {
+                    document.getElementById('query').value = "";
+                    // similarly, could hide the query row, etc.
+                }
+            }
 
-  // --connectiontype
-  const connectiontype = document.getElementById('connectiontype').value;
-  if (connectiontype) {
-    args.push(`--connectiontype "${connectiontype}"`);
-  }
+            // If targetconnectstring => hide targetserver, targettrusted, targetuser, targetpassword
+            function onTargetConnectstringChange() {
+                const tcs = document.getElementById('targetconnectstring').value.trim();
+                if (tcs) {
+                    document.getElementById('tr-targetserver').style.display = 'none';
+                    document.getElementById('tr-targettrusted').style.display = 'none';
+                    document.getElementById('tr-targetuser').style.display = 'none';
+                    document.getElementById('tr-targetpassword').style.display = 'none';
+                    document.getElementById('tr-targetdatabase').style.display = 'none';
+                } else {
+                    document.getElementById('tr-targetserver').style.display = 'table-row';
+                    document.getElementById('tr-targettrusted').style.display = 'table-row';
+                    document.getElementById('tr-targetuser').style.display = 'table-row';
+                    document.getElementById('tr-targetpassword').style.display = 'table-row';
+                    document.getElementById('tr-targetdatabase').style.display = 'table-row';
+                    onTargetTrustedChange();
+                }
+            }
 
-  // Condition-based rows: check if they're visible before adding the parameter
-  if (document.getElementById('tr-dsn').style.display !== 'none') {
-    const dsn = document.getElementById('dsn').value.trim();
-    if (dsn) {
-      args.push(`--dsn "${dsn}"`);
-    }
-  }
-  if (document.getElementById('tr-provider').style.display !== 'none') {
-    const provider = document.getElementById('provider').value.trim();
-    if (provider) {
-      args.push(`--provider "${provider}"`);
-    }
-  }
-  if (document.getElementById('tr-server').style.display !== 'none') {
-    const server = document.getElementById('server').value.trim();
-    if (server) {
-      args.push(`--server "${server}"`);
-    }
-  }
+            // If targettrusted => hide user/password
+            function onTargetTrustedChange() {
+                const ttrusted = document.getElementById('targettrusted').checked;
+                if (ttrusted) {
+                    document.getElementById('tr-targetuser').style.display = 'none';
+                    document.getElementById('tr-targetpassword').style.display = 'none';
+                } else {
+                    document.getElementById('tr-targetuser').style.display = 'table-row';
+                    document.getElementById('tr-targetpassword').style.display = 'table-row';
+                }
+            }
 
-  // --sourceconnectstring
-  const scs = document.getElementById('sourceconnectstring').value.trim();
-  if (scs) {
-    args.push(`--sourceconnectstring "${scs}"`);
-  }
+            // If method=DataDriven => show datadrivenquery, if method=Random => show distributekeycolumn, etc.
+            function onMethodChange() {
+                const method = document.getElementById('method').value;
+                // if method = None ==> cleanup parallel options
+                if (method === 'None') {
 
-  // --trusted vs user/password
-  const trusted = document.getElementById('trusted').checked;
-  if (trusted) {
-    args.push(`--trusted`);
-  } else {
-    const user = document.getElementById('user').value.trim();
-    const password = document.getElementById('password').value.trim();
-    if (user) {
-      args.push(`--user "${user}"`);
-    }
-    if (password) {
-      args.push(`--password "${password}"`);
-    }
-  }
+                    // Hide distributekeycolumn
+                    document.getElementById('distributekeycolumn').value = "";
+                    document.getElementById('tr-distributekeycolumn').style.display = 'none';
 
-  // --database
-  const database = document.getElementById('database').value.trim();
-  if (database) {
-    args.push(`--database "${database}"`);
-  }
+                    // Hide datadrivenquery
+                    document.getElementById('datadrivenquery').value = "";
+                    document.getElementById('tr-datadrivenquery').style.display = 'none';
+                    // Hide degree
+                    document.getElementById('degree').value = "";
+                }
+                else {
+                    // Show degree
+                    document.getElementById('tr-degree').style.display = 'table-row';
+                    document.getElementById('degree').value = "-2";
 
-  // --fileinput vs --query
-  const fileinput = document.getElementById('fileinput').value.trim();
-  const query = document.getElementById('query').value.trim();
-  if (fileinput) {
-    args.push(`--fileinput "${fileinput.name}"`);
-  } else if (query) {
-    args.push(`--query "${query}"`);
-  }
+                    // If DataDriven => show datadrivenquery, else hide
+                    if (method === 'DataDriven') {
+                        document.getElementById('tr-datadrivenquery').style.display = 'table-row';
+                    } else {
+                        document.getElementById('datadrivenquery').value = "";
+                        document.getElementById('tr-datadrivenquery').style.display = 'none';
+                    }
+                    // Example: if method=Random => you might want to highlight distributekeycolumn
+                    // We'll keep it always visible except for demonstration below:
+                    if (method === 'Ctid' || method === 'Rowid' || method === 'NZDataSlice') {
+                        // maybe hide distributekeycolumn
+                        document.getElementById('distributekeycolumn').value = "";
+                        document.getElementById('tr-distributekeycolumn').style.display = 'none';
+                    } else {
+                        document.getElementById('tr-distributekeycolumn').style.display = 'table-row';
+                    }
+                }
 
-  // --sourceschema
-  const sourceschema = document.getElementById('sourceschema').value.trim();
-  if (sourceschema) {
-    args.push(`--sourceschema "${sourceschema}"`);
-  }
 
-  // --sourcetable
-  const sourcetable = document.getElementById('sourcetable').value.trim();
-  if (sourcetable) {
-    args.push(`--sourcetable "${sourcetable}"`);
-  }
+                updateCommand();
+            }
 
-  // --fileoutput
-  const fileoutput = document.getElementById('fileoutput').value.trim();
-  if (fileoutput) {
-    args.push(`--fileoutput "${fileoutput}"`);
-  }
+            /* --- Build the final command line --- */
+            function updateCommand() {
+                const platform = document.getElementById('platform').value;
+                let baseCmd = (platform === 'windows') ? '.\\FastTransfer.exe' : './FastTransfer';
+                let args = [];
 
-  // --directory
-  const directory = document.getElementById('directory').value.trim();
-  if (directory) {
-    args.push(`--directory "${directory}"`);
-  }
 
-  // --delimiter
-  const delimiter = document.getElementById('delimiter').value;
-  if (delimiter) {
-    args.push(`--delimiter "${delimiter}"`);
-  }
+                // --sourceconnectiontype
+                const sctype = document.getElementById('sourceconnectiontype').value.trim();
+                if (sctype) {
+                    args.push(` --sourceconnectiontype "${sctype}"`);
+                }
 
-  // --quotes
-  const quotes = document.getElementById('quotes').checked;
-  if (quotes) {
-    args.push(`--quotes true`);
-  }
+                // --sourceconnectstring
+                const scs = document.getElementById('sourceconnectstring').value.trim();
+                if (scs) {
+                    args.push(` --sourceconnectstring "${scs}"`);
+                } else {
+                    // if no connectstring, gather DSN/provider/server/trusted/user/password
+                    const dsn = document.getElementById('sourcedsn').value.trim();
+                    if (dsn) {
+                        args.push(` --sourcedsn "${dsn}"`);
+                    }
+                    const sprv = document.getElementById('sourceprovider').value.trim();
+                    if (sprv) {
+                        args.push(` --sourceprovider "${sprv}"`);
+                    }
+                    const ssvr = document.getElementById('sourceserver').value.trim();
+                    if (ssvr) {
+                        args.push(` --sourceserver "${ssvr}"`);
+                    }
+                    const strusted = document.getElementById('sourcetrusted').checked;
+                    if (strusted) {
+                        args.push(` --sourcetrusted`);
+                    } else {
+                        const suser = document.getElementById('sourceuser').value.trim();
+                        if (suser) {
+                            args.push(` --sourceuser "${suser}"`);
+                        }
+                        const spass = document.getElementById('sourcepassword').value.trim();
+                        if (spass) {
+                            args.push(` --sourcepassword "${spass}"`);
+                        }
+                    }
+                }
 
-  // --dateformat
-  const dateformat = document.getElementById('dateformat').value.trim();
-  if (dateformat) {
-    args.push(`--dateformat "${dateformat}"`);
-  }
+                // --sourcedatabase
+                const sdb = document.getElementById('sourcedatabase').value.trim();
+                if (sdb) {
+                    args.push(` --sourcedatabase "${sdb}"`);
+                }
 
-  // --encoding
-  const encoding = document.getElementById('encoding').value.trim();
-  if (encoding) {
-    args.push(`--encoding "${encoding}"`);
-  }
+                // --sourceschema
+                const ssch = document.getElementById('sourceschema').value.trim();
+                if (ssch) {
+                    args.push(` --sourceschema "${ssch}"`);
+                }
 
-  // --timestamped
-  const timestamped = document.getElementById('timestamped').checked;
-  if (timestamped) {
-    args.push(`--timestamped`);
-  }
+                // --sourcetable
+                const stab = document.getElementById('sourcetable').value.trim();
+                if (stab) {
+                    args.push(` --sourcetable "${stab}"`);
+                }
 
-  // --noheader
-  const noheader = document.getElementById('noheader').checked;
-  if (noheader) {
-    args.push(`--noheader`);
-  }
+                // query vs fileinput
+                const q = document.getElementById('query').value.trim();
+                const f = document.getElementById('fileinput').value.trim();
+                if (q) {
+                    args.push(` --query "${q}"`);
+                } else if (f) {
+                    args.push(` --fileinput "${f}"`);
+                }
 
-  // --decimalseparator
-  const decimalseparator = document.getElementById('decimalseparator').value.trim();
-  if (decimalseparator) {
-    args.push(`--decimalseparator "${decimalseparator}"`);
-  }
+                // targetconnectiontype
+                const tctype = document.getElementById('targetconnectiontype').value.trim();
+                if (tctype) {
+                    args.push(` --targetconnectiontype "${tctype}"`);
+                }
 
-  // --method
-  const method = document.getElementById('method').value;
-  if (method) {
-    args.push(`--method "${method}"`);
-  }
+                // targetconnectstring
+                const tcs = document.getElementById('targetconnectstring').value.trim();
+                if (tcs) {
+                    args.push(` --targetconnectstring "${tcs}"`);
+                } else {
+                    // gather targetserver / trusted / user / password
+                    const tsvr = document.getElementById('targetserver').value.trim();
+                    if (tsvr) {
+                        args.push(` --targetserver "${tsvr}"`);
+                    }
+                    const ttrusted = document.getElementById('targettrusted').checked;
+                    if (ttrusted) {
+                        args.push(` --targettrusted`);
+                    } else {
+                        const tuser = document.getElementById('targetuser').value.trim();
+                        if (tuser) {
+                            args.push(` --targetuser "${tuser}"`);
+                        }
+                        const tpass = document.getElementById('targetpassword').value.trim();
+                        if (tpass) {
+                            args.push(` --targetpassword "${tpass}"`);
+                        }
+                    }
+                }
 
-  // --paralleldegree (only if visible => method != None)
-  if (document.getElementById('tr-paralleldegree').style.display !== 'none') {
-    const pd = document.getElementById('paralleldegree').value;
-    if (pd) {
-      args.push(`--paralleldegree ${pd}`);
-    }
-  }
+                // targetdatabase
+                const tdb = document.getElementById('targetdatabase').value.trim();
+                if (tdb) {
+                    args.push(` --targetdatabase "${tdb}"`);
+                }
 
-  // --distributekeycolumn
-  const dkc = document.getElementById('distributekeycolumn').value.trim();
-  if (dkc) {
-    args.push(`--distributekeycolumn "${dkc}"`);
-  }
+                // targetschema
+                const tsch = document.getElementById('targetschema').value.trim();
+                if (tsch) {
+                    args.push(` --targetschema "${tsch}"`);
+                }
 
-  // --merge
-  const merge = document.getElementById('merge').checked;
-  if (!merge) {
-    args.push(`--merge false`);
-  }
+                // targettable
+                const ttab = document.getElementById('targettable').value.trim();
+                if (ttab) {
+                    args.push(` --targettable "${ttab}"`);
+                }
 
-  // --boolformat
-  const boolformat = document.getElementById('boolformat').value;
-  if (boolformat) {
-    args.push(`--boolformat "${boolformat}"`);
-  }
+                // degree
+                const degree = document.getElementById('degree').value;
+                if (degree) {
+                    args.push(` --degree ${degree}`);
+                }
 
-  // --runid
-  const runid = document.getElementById('runid').value.trim();
-  if (runid) {
-    args.push(`--runid "${runid}"`);
-  }
+                // method
+                const method = document.getElementById('method').value;
+                if (method) {
+                    args.push(` --method "${method}"`);
+                }
 
-  // --settingsfile
-  const settingsfile = document.getElementById('settingsfile').value.trim();
-  if (settingsfile) {
-    args.push(`--settingsfile "${settingsfile}"`);
-  }
+                // distributekeycolumn (only if row is visible, or always?)
+                if (document.getElementById('tr-distributekeycolumn').style.display !== 'none') {
+                    const dk = document.getElementById('distributekeycolumn').value.trim();
+                    if (dk) {
+                        args.push(` --distributekeycolumn "${dk}"`);
+                    }
+                }
 
-  // Build final command
-  let cmd = baseCmd;
-  if (args.length > 0) {
-    cmd += " " + args.join(" ");
-  }
-  document.getElementById('result').textContent = cmd;
-}
+                // datadrivenquery (only if displayed)
+                if (document.getElementById('tr-datadrivenquery').style.display !== 'none') {
+                    const ddq = document.getElementById('datadrivenquery').value.trim();
+                    if (ddq) {
+                        args.push(` --datadrivenquery "${ddq}"`);
+                    }
+                }
 
-// Copy to clipboard
-function copyCommand() {
-  const cmd = document.getElementById('result').textContent;
-  navigator.clipboard.writeText(cmd)
-    .then(() => alert('Command copied!'))
-    .catch(() => alert('Failed to copy.'));
-}
+                // loadmode
+                const loadmode = document.getElementById('loadmode').value;
+                if (loadmode) {
+                    args.push(` --loadmode "${loadmode}"`);
+                }
 
-// Initialize display states
-function initDisplayStates() {
-  // Hide DSN, Provider, or Server initially
-  document.getElementById('tr-dsn').style.display = 'none';
-  document.getElementById('tr-provider').style.display = 'none';
-  // By default, let's show server (but if connectiontype is empty, we might hide it)
-  document.getElementById('tr-server').style.display = 'table-row';
+                // mapmethod
+                const mapmethod = document.getElementById('mapmethod').value;
+                if (mapmethod) {
+                    args.push(` --mapmethod "${mapmethod}"`);
+                }
 
-  // By default, method is None => hide paralleldegree
-  document.getElementById('tr-paralleldegree').style.display = 'none';
-}
+                // batchsize
+                const batchsize = document.getElementById('batchsize').value.trim();
+                if (batchsize) {
+                    args.push(` --batchsize ${batchsize}`);
+                }
 
-// On load
-initDisplayStates();
-updateCommand();
-</script>
+                // useworktables
+                const usework = document.getElementById('useworktables').checked;
+                if (usework) {
+                    args.push(` --useworktables`);
+                }
 
+                // runid
+                const runid = document.getElementById('runid').value.trim();
+                if (runid) {
+                    args.push(` --runid "${runid}"`);
+                }
+
+                // settingsfile
+                const sfile = document.getElementById('settingsfile').value.trim();
+                if (sfile) {
+                    args.push(` --settingsfile "${sfile}"`);
+                }
+
+                // licence
+                const licence = document.getElementById('licence').value.trim();
+                if (licence) {
+                    args.push(` --licence "${licence}"`);
+                }
+
+                // Build final command
+                let cmd = baseCmd;
+                if (args.length > 0) {
+                    cmd += " " + args.join(" ");
+                }
+
+                // Display
+                document.getElementById('result').textContent = cmd;
+            }
+
+            /* Copy to clipboard */
+            function copyCommand() {
+                const cmd = document.getElementById('result').textContent;
+                navigator.clipboard.writeText(cmd)
+                    .then(() => alert('Command copied!'))
+                    .catch(() => alert('Unable to copy.'));
+            }
+
+            /* On page load, init display states */
+            function initDisplayStates() {
+                // Hide optional rows as needed
+                document.getElementById('tr-datadrivenquery').style.display = 'none';
+                // By default, hide distributekeycolumn
+                document.getElementById('tr-distributekeycolumn').style.display = 'none';
+                // By default hide degree
+                document.getElementById('tr-degree').style.display = 'none';
+                document.getElementById('degree').value = "";
+                document.getElementById('tr-sourcedsn').style.display = 'none';
+                document.getElementById('tr-sourceprovider').style.display = 'none';
+
+            }
+
+            function onSourceTypeChange() {
+                const sctype = document.getElementById('sourceconnectiontype').value.trim();
+                if (sctype === 'odbc') {
+                    document.getElementById('tr-sourcedsn').style.display = 'table-row';
+                    document.getElementById('tr-sourceprovider').style.display = 'none';
+                    document.getElementById('tr-sourceconnectstring').style.display = 'none';
+                    document.getElementById('tr-sourceserver').style.display = 'none';
+                } else if (sctype === 'oledb') {
+                    document.getElementById('tr-sourcedsn').style.display = 'none';
+                    document.getElementById('tr-sourceprovider').style.display = 'table-row';
+                    document.getElementById('tr-sourceconnectstring').style.display = 'none';
+                    document.getElementById('tr-sourceserver').style.display = 'table-row';
+                } else {
+                    document.getElementById('tr-sourcedsn').style.display = 'none';
+                    document.getElementById('tr-sourceprovider').style.display = 'none';
+                    document.getElementById('tr-sourceconnectstring').style.display = 'table-row';
+                    document.getElementById('tr-sourceserver').style.display = 'table-row';
+                }
+
+                onSourceTrustedChange();
+            }
+
+
+
+            initDisplayStates();
+            updateCommand();
+        </script>
 </body>
 </html>
