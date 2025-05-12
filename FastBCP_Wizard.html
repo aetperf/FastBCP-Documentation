@@ -173,463 +173,493 @@
 
 <!-- ==================== OUTPUT OPTIONS SECTION ==================== -->
 <div class="section">
-  <h2>Output Options</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Short Description</th>
-        <th>Value</th>
-        <th>Parameter</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- fileoutput -->
-      <tr>
-        <td>File Output * (extension will define the filetype : csv , json, parquet, xlsx or binary)</td>
-        <td><input type="text" id="fileoutput" onchange="updateCommand()"></td>
-        <td>--fileoutput</td>
-        <td>[none]</td>
-      </tr>
+    <h2>Output Options</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Short Description</th>
+                <th>Value</th>
+                <th>Parameter</th>
+                <th>Default</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- fileoutput -->
+            <tr>
+                <td>File Output * (extension will define the filetype : csv , json, parquet, xlsx or binary)</td>
+                <td><input type="text" id="fileoutput" onchange="updateCommand()"></td>
+                <td>--fileoutput</td>
+                <td>[none]</td>
+            </tr>
 
-      <!-- directory -->
-      <tr>
-        <td>Output Directory *</td>
-        <td><input type="text" id="directory" oninput="updateCommand()"></td>
-        <td>--directory</td>
-        <td>[none]</td>
-      </tr>
+            <!-- directory -->
+            <tr>
+                <td>Output Directory *</td>
+                <td><input type="text" id="directory" oninput="updateCommand()"></td>
+                <td>--directory</td>
+                <td>[none]</td>
+            </tr>
 
-      <!-- timestamped -->
-      <tr>
-        <td>Timestamped ?</td>
-        <td><input type="checkbox" id="timestamped" onchange="updateCommand()"></td>
-        <td>--timestamped</td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
+            <!-- timestamped -->
+            <tr>
+                <td>Timestamped ?</td>
+                <td><input type="checkbox" id="timestamped" onchange="updateCommand()"></td>
+                <td>--timestamped</td>
+                <td>false</td>
+            </tr>
+        </tbody>
+    </table>
 
- <!-- ==================== FORMAT OPTIONS SECTION ==================== -->
-<div class="section">
-  <h2>Format Options</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Short Description</th>
-        <th>Value</th>
-        <th>Parameter</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody> 
+    <!-- ==================== FORMAT OPTIONS SECTION ==================== -->
+    <div class="section">
+        <h2>Format Options</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Description</th>
+                    <th>Value</th>
+                    <th>Parameter</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
 
-      <!-- delimiter -->
-      <tr>
-        <td>Delimiter</td>
-        <td><input type="text" id="delimiter" value="" oninput="updateCommand()"></td>
-        <td>--delimiter</td>
-        <td>|</td>
-      </tr>
+                <!-- delimiter -->
+                <tr>
+                    <td>Delimiter</td>
+                    <td><input type="text" id="delimiter" value="" oninput="updateCommand()"></td>
+                    <td>--delimiter</td>
+                    <td>|</td>
+                </tr>
 
-      <!-- quotes -->
-      <tr>
-        <td>Use Quotes ?</td>
-        <td><input type="checkbox" id="quotes" onchange="updateCommand()"></td>
-        <td>--quotes</td>
-        <td>false</td>
-      </tr>
+                <!-- quotes -->
+                <tr>
+                    <td>Use Quotes ?</td>
+                    <td><input type="checkbox" id="quotes" onchange="updateCommand()"></td>
+                    <td>--quotes</td>
+                    <td>false</td>
+                </tr>
 
-      <!-- dateformat -->
-      <tr>
-        <td>Date and DateTime Format</td>
-        <td><input type="text" id="dateformat" value="yyyy-MM-dd HH:mm:ss" oninput="updateCommand()"></td>
-        <td>--dateformat</td>
-        <td>yyyy-MM-dd</td>
-      </tr>
+                <!-- dateformat -->
+                <tr>
+                    <td>Date and DateTime Format</td>
+                    <td><input type="text" id="dateformat" value="yyyy-MM-dd HH:mm:ss" oninput="updateCommand()"></td>
+                    <td>--dateformat</td>
+                    <td>yyyy-MM-dd</td>
+                </tr>
 
-      <!-- decimalseparator -->
-      <tr>
-      <td>Decimal Separator</td>
-      <td><input type="text" id="decimalseparator" value="." oninput="updateCommand()"></td>
-      <td>--decimalseparator</td>
-      <td>.</td>
-    </tr>
+                <!-- decimalseparator -->
+                <tr>
+                    <td>Decimal Separator</td>
+                    <td><input type="text" id="decimalseparator" value="." oninput="updateCommand()"></td>
+                    <td>--decimalseparator</td>
+                    <td>.</td>
+                </tr>
 
-    <!-- boolformat -->
-    <tr>
-      <td>Boolean Format</td>
-      <td>
-        <select id="boolformat" onchange="updateCommand()">
-          <option value="">-- choose --</option>
-          <option value="automatic">automatic</option>
-          <option value="true/false">true/false</option>
-          <option value="1/0">1/0</option>
-          <option value="t/f">t/f</option>
-        </select>
-      </td>
-      <td>--boolformat</td>
-      <td>automatic</td>
-    </tr>
+                <!-- boolformat -->
+                <tr>
+                    <td>Boolean Format</td>
+                    <td>
+                        <select id="boolformat" onchange="updateCommand()">
+                            <option value="">-- choose --</option>
+                            <option value="automatic">automatic</option>
+                            <option value="true/false">true/false</option>
+                            <option value="1/0">1/0</option>
+                            <option value="t/f">t/f</option>
+                        </select>
+                    </td>
+                    <td>--boolformat</td>
+                    <td>automatic</td>
+                </tr>
 
-      <!-- encoding -->
-      <tr>
-        <td>Encoding</td>
-        <td><input type="text" id="encoding" value="" oninput="updateCommand()"></td>
-        <td>--encoding</td>
-        <td>UTF-8</td>
-      </tr>
-
-  
-
-      <!-- noheader -->
-      <tr>
-        <td>Remove Header?</td>
-        <td><input type="checkbox" id="noheader" onchange="updateCommand()"></td>
-        <td>--noheader</td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- ==================== ADVANCED PARAMETERS SECTION ==================== -->
-<div class="section">
-  <h2>Advanced Parameters</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Short Description</th>
-        <th>Value</th>
-        <th>Parameter</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
- 
-
-      <!-- method -->
-      <tr>
-        <td>Parallel Method</td>
-        <td>
-          <select id="method" onchange="onMethodChange(); updateCommand()">
-            <option value="None">None</option>
-            <option value="Random">Random</option>
-            <option value="DataDriven">DataDriven</option>
-            <option value="Ctid">Ctid</option>
-            <option value="Rowid">Rowid</option>
-            <option value="RangeId">RangeId</option>
-            <option value="Ntile">Ntile</option>
-          </select>
-        </td>
-        <td>--method</td>
-        <td>None</td>
-      </tr>
-
-      <!-- paralleldegree (only if method != None) -->
-      <tr id="tr-paralleldegree">
-        <td>Parallel Degree</td>
-        <td><input type="number" id="paralleldegree" value="-2" min="-32" max="1024" oninput="updateCommand()"></td>
-        <td>--paralleldegree</td>
-        <td>-2</td>
-      </tr>
-
-      <!-- distributekeycolumn -->
-      <tr id="tr-distributekeycolumn">
-        <td>Distribute Key Column</td>
-        <td><input type="text" id="distributekeycolumn" oninput="updateCommand()"></td>
-        <td>--distributekeycolumn</td>
-        <td>[none]</td>
-      </tr>
-
-      <!-- merge -->
-      <tr>
-        <td>Merge Temp Files</td>
-        <td><input type="checkbox" id="merge" checked onchange="updateCommand()"></td>
-        <td>--merge</td>
-        <td>true</td>
-      </tr>
+                <!-- encoding -->
+                <tr>
+                    <td>Encoding</td>
+                    <td><input type="text" id="encoding" value="" oninput="updateCommand()"></td>
+                    <td>--encoding</td>
+                    <td>UTF-8</td>
+                </tr>
 
 
 
-      <!-- runid -->
-      <tr>
-        <td>Run ID</td>
-        <td><input type="text" id="runid" oninput="updateCommand()"></td>
-        <td>--runid</td>
-        <td>[none]</td>
-      </tr>
+                <!-- noheader -->
+                <tr>
+                    <td>Remove Header?</td>
+                    <td><input type="checkbox" id="noheader" onchange="updateCommand()"></td>
+                    <td>--noheader</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-      <!-- settingsfile -->
-      <tr>
-        <td>Settings File</td>
-        <td><input type="text" id="settingsfile" value="FastBCP_Settings.json" oninput="updateCommand()"></td>
-        <td>--settingsfile</td>
-        <td>FastBCP_Settings.json</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <!-- ==================== ADVANCED PARAMETERS SECTION ==================== -->
+    <div class="section">
+        <h2>Advanced Parameters</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Description</th>
+                    <th>Value</th>
+                    <th>Parameter</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
 
-<!-- BUTTONS & RESULT -->
-<button type="button" onclick="copyCommand()">Copy Command</button>
-<button type="button" onclick="updateCommand()">Refresh</button>
+
+                <!-- method -->
+                <tr>
+                    <td>Parallel Method</td>
+                    <td>
+                        <select id="method" onchange="onMethodChange(); updateCommand()">
+                            <option value="None">None</option>
+                            <option value="Random">Random</option>
+                            <option value="DataDriven">DataDriven</option>
+                            <option value="Ctid">Ctid</option>
+                            <option value="Rowid">Rowid</option>
+                            <option value="RangeId">RangeId</option>
+                            <option value="Ntile">Ntile</option>
+                        </select>
+                    </td>
+                    <td>--method</td>
+                    <td>None</td>
+                </tr>
+
+                <!-- paralleldegree (only if method != None) -->
+                <tr id="tr-paralleldegree">
+                    <td>Parallel Degree</td>
+                    <td><input type="number" id="paralleldegree" value="-2" min="-32" max="1024" oninput="updateCommand()"></td>
+                    <td>--paralleldegree</td>
+                    <td>-2</td>
+                </tr>
+
+                <!-- distributekeycolumn -->
+                <tr id="tr-distributekeycolumn">
+                    <td>Distribute Key Column</td>
+                    <td><input type="text" id="distributekeycolumn" oninput="updateCommand()"></td>
+                    <td>--distributekeycolumn</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- merge -->
+                <tr>
+                    <td>Merge Temp Files</td>
+                    <td><input type="checkbox" id="merge" checked onchange="updateCommand()"></td>
+                    <td>--merge</td>
+                    <td>true</td>
+                </tr>
+
+
+
+                <!-- runid -->
+                <tr>
+                    <td>Run ID</td>
+                    <td><input type="text" id="runid" oninput="updateCommand()"></td>
+                    <td>--runid</td>
+                    <td>[none]</td>
+                </tr>
+
+                <!-- settingsfile -->
+                <tr>
+                    <td>Settings File</td>
+                    <td><input type="text" id="settingsfile" value="FastBCP_Settings.json" oninput="updateCommand()"></td>
+                    <td>--settingsfile</td>
+                    <td>FastBCP_Settings.json</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--  =================== LICENCE SECTION  =================== -->
+    <div class="section">
+        <h2>Licence</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Description</th>
+                    <th>Value</th>
+                    <th>Parameter</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- licence -->
+                <tr>
+                    <td>Licence</td>
+                    <td><input type="text" id="licence" oninput="updateCommand()"></td>
+                    <td>--licence</td>
+                    <td>[none] if not provided, will use FastTransfer.lic</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BUTTONS & RESULT -->
+    <button type="button" onclick="copyCommand()">Copy Command</button>
+    <button type="button" onclick="updateCommand()">Refresh</button>
 <pre id="result"></pre>
 
-<script>
-// --- Show/Hide logic based on connection type ---
-function onConnectionTypeChange() {
-  const ctype = document.getElementById('connectiontype').value;
+    <script>
+        // --- Show/Hide logic based on connection type ---
+        function onConnectionTypeChange() {
+            const ctype = document.getElementById('connectiontype').value;
 
-  // If ctype = "odbc" => show tr-dsn, hide tr-provider, hide tr-server
-  // If ctype = "oledb" => show tr-provider, hide tr-dsn, hide tr-server
-  // Else => show tr-server, hide tr-dsn, hide tr-provider
+            // If ctype = "odbc" => show tr-dsn, hide tr-provider, hide tr-server
+            // If ctype = "oledb" => show tr-provider, hide tr-dsn, hide tr-server
+            // Else => show tr-server, hide tr-dsn, hide tr-provider
 
-  if (ctype === 'odbc') {
-    document.getElementById('tr-dsn').style.display = 'table-row';
-    document.getElementById('tr-provider').style.display = 'none';
-    document.getElementById('tr-server').style.display = 'none';
-  } 
-  else if (ctype === 'oledb') {
-    document.getElementById('tr-dsn').style.display = 'none';
-    document.getElementById('tr-provider').style.display = 'table-row';
-    document.getElementById('tr-server').style.display = 'table-row';
-  }
-  else {
-    // e.g. mssql, pgsql, mysql, ...
-    document.getElementById('tr-dsn').style.display = 'none';
-    document.getElementById('tr-provider').style.display = 'none';
-    document.getElementById('tr-server').style.display = 'table-row';
-  }
-}
+            if (ctype === 'odbc') {
+                document.getElementById('tr-dsn').style.display = 'table-row';
+                document.getElementById('tr-provider').style.display = 'none';
+                document.getElementById('tr-server').style.display = 'none';
+            }
+            else if (ctype === 'oledb') {
+                document.getElementById('tr-dsn').style.display = 'none';
+                document.getElementById('tr-provider').style.display = 'table-row';
+                document.getElementById('tr-server').style.display = 'table-row';
+            }
+            else {
+                // e.g. mssql, pgsql, mysql, ...
+                document.getElementById('tr-dsn').style.display = 'none';
+                document.getElementById('tr-provider').style.display = 'none';
+                document.getElementById('tr-server').style.display = 'table-row';
+            }
+        }
 
-// --- Show/Hide logic based on method ---
-function onMethodChange() {
-  const method = document.getElementById('method').value;
-  // If method == "None", hide paralleldegree
-  if (method === 'None') {
-    document.getElementById('tr-paralleldegree').style.display = 'none';
-  } else {
-    document.getElementById('tr-paralleldegree').style.display = 'table-row';
-  }
-    // Hide distributekeycolumn if the method is ctid or rowid
-  if (method === 'Ctid' || method === 'Rowid') {
-    document.getElementById('tr-distributekeycolumn').style.display = 'none';
-  } else {
-    document.getElementById('tr-distributekeycolumn').style.display = 'table-row';
-  }
-}
+        // --- Show/Hide logic based on method ---
+        function onMethodChange() {
+            const method = document.getElementById('method').value;
+            // If method == "None", hide paralleldegree
+            if (method === 'None') {
+                document.getElementById('tr-paralleldegree').style.display = 'none';
+            } else {
+                document.getElementById('tr-paralleldegree').style.display = 'table-row';
+            }
+            // Hide distributekeycolumn if the method is ctid or rowid
+            if (method === 'Ctid' || method === 'Rowid') {
+                document.getElementById('tr-distributekeycolumn').style.display = 'none';
+            } else {
+                document.getElementById('tr-distributekeycolumn').style.display = 'table-row';
+            }
+        }
 
-// --- Build the final command ---
-function updateCommand() {
-  const platform = document.getElementById('platform').value;
-  let baseCmd = (platform === 'windows') ? '.\\FastBCP.exe' : './FastBCP';
-  let args = [];
+        // --- Build the final command ---
+        function updateCommand() {
+            const platform = document.getElementById('platform').value;
+            let baseCmd = (platform === 'windows') ? '.\\FastBCP.exe' : './FastBCP';
+            let args = [];
 
-  // --connectiontype
-  const connectiontype = document.getElementById('connectiontype').value;
-  if (connectiontype) {
-    args.push(`--connectiontype "${connectiontype}"`);
-  }
+            // --connectiontype
+            const connectiontype = document.getElementById('connectiontype').value;
+            if (connectiontype) {
+                args.push(`--connectiontype "${connectiontype}"`);
+            }
 
-  // Condition-based rows: check if they're visible before adding the parameter
-  if (document.getElementById('tr-dsn').style.display !== 'none') {
-    const dsn = document.getElementById('dsn').value.trim();
-    if (dsn) {
-      args.push(`--dsn "${dsn}"`);
-    }
-  }
-  if (document.getElementById('tr-provider').style.display !== 'none') {
-    const provider = document.getElementById('provider').value.trim();
-    if (provider) {
-      args.push(`--provider "${provider}"`);
-    }
-  }
-  if (document.getElementById('tr-server').style.display !== 'none') {
-    const server = document.getElementById('server').value.trim();
-    if (server) {
-      args.push(`--server "${server}"`);
-    }
-  }
+            // Condition-based rows: check if they're visible before adding the parameter
+            if (document.getElementById('tr-dsn').style.display !== 'none') {
+                const dsn = document.getElementById('dsn').value.trim();
+                if (dsn) {
+                    args.push(`--dsn "${dsn}"`);
+                }
+            }
+            if (document.getElementById('tr-provider').style.display !== 'none') {
+                const provider = document.getElementById('provider').value.trim();
+                if (provider) {
+                    args.push(`--provider "${provider}"`);
+                }
+            }
+            if (document.getElementById('tr-server').style.display !== 'none') {
+                const server = document.getElementById('server').value.trim();
+                if (server) {
+                    args.push(`--server "${server}"`);
+                }
+            }
 
-  // --sourceconnectstring
-  const scs = document.getElementById('sourceconnectstring').value.trim();
-  if (scs) {
-    args.push(`--sourceconnectstring "${scs}"`);
-  }
+            // --sourceconnectstring
+            const scs = document.getElementById('sourceconnectstring').value.trim();
+            if (scs) {
+                args.push(`--sourceconnectstring "${scs}"`);
+            }
 
-  // --trusted vs user/password
-  const trusted = document.getElementById('trusted').checked;
-  if (trusted) {
-    args.push(`--trusted`);
-  } else {
-    const user = document.getElementById('user').value.trim();
-    const password = document.getElementById('password').value.trim();
-    if (user) {
-      args.push(`--user "${user}"`);
-    }
-    if (password) {
-      args.push(`--password "${password}"`);
-    }
-  }
+            // --trusted vs user/password
+            const trusted = document.getElementById('trusted').checked;
+            if (trusted) {
+                args.push(`--trusted`);
+            } else {
+                const user = document.getElementById('user').value.trim();
+                const password = document.getElementById('password').value.trim();
+                if (user) {
+                    args.push(`--user "${user}"`);
+                }
+                if (password) {
+                    args.push(`--password "${password}"`);
+                }
+            }
 
-  // --database
-  const database = document.getElementById('database').value.trim();
-  if (database) {
-    args.push(`--database "${database}"`);
-  }
+            // --database
+            const database = document.getElementById('database').value.trim();
+            if (database) {
+                args.push(`--database "${database}"`);
+            }
 
-  // --fileinput vs --query
-  const fileinput = document.getElementById('fileinput').value.trim();
-  const query = document.getElementById('query').value.trim();
-  if (fileinput) {
-    args.push(`--fileinput "${fileinput.name}"`);
-  } else if (query) {
-    args.push(`--query "${query}"`);
-  }
+            // --fileinput vs --query
+            const fileinput = document.getElementById('fileinput').value.trim();
+            const query = document.getElementById('query').value.trim();
+            if (fileinput) {
+                args.push(`--fileinput "${fileinput.name}"`);
+            } else if (query) {
+                args.push(`--query "${query}"`);
+            }
 
-  // --sourceschema
-  const sourceschema = document.getElementById('sourceschema').value.trim();
-  if (sourceschema) {
-    args.push(`--sourceschema "${sourceschema}"`);
-  }
+            // --sourceschema
+            const sourceschema = document.getElementById('sourceschema').value.trim();
+            if (sourceschema) {
+                args.push(`--sourceschema "${sourceschema}"`);
+            }
 
-  // --sourcetable
-  const sourcetable = document.getElementById('sourcetable').value.trim();
-  if (sourcetable) {
-    args.push(`--sourcetable "${sourcetable}"`);
-  }
+            // --sourcetable
+            const sourcetable = document.getElementById('sourcetable').value.trim();
+            if (sourcetable) {
+                args.push(`--sourcetable "${sourcetable}"`);
+            }
 
-  // --fileoutput
-  const fileoutput = document.getElementById('fileoutput').value.trim();
-  if (fileoutput) {
-    args.push(`--fileoutput "${fileoutput}"`);
-  }
+            // --fileoutput
+            const fileoutput = document.getElementById('fileoutput').value.trim();
+            if (fileoutput) {
+                args.push(`--fileoutput "${fileoutput}"`);
+            }
 
-  // --directory
-  const directory = document.getElementById('directory').value.trim();
-  if (directory) {
-    args.push(`--directory "${directory}"`);
-  }
+            // --directory
+            const directory = document.getElementById('directory').value.trim();
+            if (directory) {
+                args.push(`--directory "${directory}"`);
+            }
 
-  // --delimiter
-  const delimiter = document.getElementById('delimiter').value;
-  if (delimiter) {
-    args.push(`--delimiter "${delimiter}"`);
-  }
+            // --delimiter
+            const delimiter = document.getElementById('delimiter').value;
+            if (delimiter) {
+                args.push(`--delimiter "${delimiter}"`);
+            }
 
-  // --quotes
-  const quotes = document.getElementById('quotes').checked;
-  if (quotes) {
-    args.push(`--quotes true`);
-  }
+            // --quotes
+            const quotes = document.getElementById('quotes').checked;
+            if (quotes) {
+                args.push(`--quotes true`);
+            }
 
-  // --dateformat
-  const dateformat = document.getElementById('dateformat').value.trim();
-  if (dateformat) {
-    args.push(`--dateformat "${dateformat}"`);
-  }
+            // --dateformat
+            const dateformat = document.getElementById('dateformat').value.trim();
+            if (dateformat) {
+                args.push(`--dateformat "${dateformat}"`);
+            }
 
-  // --encoding
-  const encoding = document.getElementById('encoding').value.trim();
-  if (encoding) {
-    args.push(`--encoding "${encoding}"`);
-  }
+            // --encoding
+            const encoding = document.getElementById('encoding').value.trim();
+            if (encoding) {
+                args.push(`--encoding "${encoding}"`);
+            }
 
-  // --timestamped
-  const timestamped = document.getElementById('timestamped').checked;
-  if (timestamped) {
-    args.push(`--timestamped`);
-  }
+            // --timestamped
+            const timestamped = document.getElementById('timestamped').checked;
+            if (timestamped) {
+                args.push(`--timestamped`);
+            }
 
-  // --noheader
-  const noheader = document.getElementById('noheader').checked;
-  if (noheader) {
-    args.push(`--noheader`);
-  }
+            // --noheader
+            const noheader = document.getElementById('noheader').checked;
+            if (noheader) {
+                args.push(`--noheader`);
+            }
 
-  // --decimalseparator
-  const decimalseparator = document.getElementById('decimalseparator').value.trim();
-  if (decimalseparator) {
-    args.push(`--decimalseparator "${decimalseparator}"`);
-  }
+            // --decimalseparator
+            const decimalseparator = document.getElementById('decimalseparator').value.trim();
+            if (decimalseparator) {
+                args.push(`--decimalseparator "${decimalseparator}"`);
+            }
 
-  // --method
-  const method = document.getElementById('method').value;
-  if (method) {
-    args.push(`--method "${method}"`);
-  }
+            // --method
+            const method = document.getElementById('method').value;
+            if (method) {
+                args.push(`--method "${method}"`);
+            }
 
-  // --paralleldegree (only if visible => method != None)
-  if (document.getElementById('tr-paralleldegree').style.display !== 'none') {
-    const pd = document.getElementById('paralleldegree').value;
-    if (pd) {
-      args.push(`--paralleldegree ${pd}`);
-    }
-  }
+            // --paralleldegree (only if visible => method != None)
+            if (document.getElementById('tr-paralleldegree').style.display !== 'none') {
+                const pd = document.getElementById('paralleldegree').value;
+                if (pd) {
+                    args.push(`--paralleldegree ${pd}`);
+                }
+            }
 
-  // --distributekeycolumn
-  const dkc = document.getElementById('distributekeycolumn').value.trim();
-  if (dkc) {
-    args.push(`--distributekeycolumn "${dkc}"`);
-  }
+            // --distributekeycolumn
+            const dkc = document.getElementById('distributekeycolumn').value.trim();
+            if (dkc) {
+                args.push(`--distributekeycolumn "${dkc}"`);
+            }
 
-  // --merge
-  const merge = document.getElementById('merge').checked;
-  if (!merge) {
-    args.push(`--merge false`);
-  }
+            // --merge
+            const merge = document.getElementById('merge').checked;
+            if (!merge) {
+                args.push(`--merge false`);
+            }
 
-  // --boolformat
-  const boolformat = document.getElementById('boolformat').value;
-  if (boolformat) {
-    args.push(`--boolformat "${boolformat}"`);
-  }
+            // --boolformat
+            const boolformat = document.getElementById('boolformat').value;
+            if (boolformat) {
+                args.push(`--boolformat "${boolformat}"`);
+            }
 
-  // --runid
-  const runid = document.getElementById('runid').value.trim();
-  if (runid) {
-    args.push(`--runid "${runid}"`);
-  }
+            // --runid
+            const runid = document.getElementById('runid').value.trim();
+            if (runid) {
+                args.push(`--runid "${runid}"`);
+            }
 
-  // --settingsfile
-  const settingsfile = document.getElementById('settingsfile').value.trim();
-  if (settingsfile) {
-    args.push(`--settingsfile "${settingsfile}"`);
-  }
+            // --settingsfile
+            const settingsfile = document.getElementById('settingsfile').value.trim();
+            if (settingsfile) {
+                args.push(`--settingsfile "${settingsfile}"`);
+            }
 
-  // Build final command
-  let cmd = baseCmd;
-  if (args.length > 0) {
-    cmd += " " + args.join(" ");
-  }
-  document.getElementById('result').textContent = cmd;
-}
+            // licence
+            const licence = document.getElementById('licence').value.trim();
+            if (licence) {
+                args.push(` --licence "${licence}"`);
+            }
 
-// Copy to clipboard
-function copyCommand() {
-  const cmd = document.getElementById('result').textContent;
-  navigator.clipboard.writeText(cmd)
-    .then(() => alert('Command copied!'))
-    .catch(() => alert('Failed to copy.'));
-}
+            // Build final command
+            let cmd = baseCmd;
+            if (args.length > 0) {
+                cmd += " " + args.join(" ");
+            }
+            document.getElementById('result').textContent = cmd;
+        }
 
-// Initialize display states
-function initDisplayStates() {
-  // Hide DSN, Provider, or Server initially
-  document.getElementById('tr-dsn').style.display = 'none';
-  document.getElementById('tr-provider').style.display = 'none';
-  // By default, let's show server (but if connectiontype is empty, we might hide it)
-  document.getElementById('tr-server').style.display = 'table-row';
+        // Copy to clipboard
+        function copyCommand() {
+            const cmd = document.getElementById('result').textContent;
+            navigator.clipboard.writeText(cmd)
+                .then(() => alert('Command copied!'))
+                .catch(() => alert('Failed to copy.'));
+        }
 
-  // By default, method is None => hide paralleldegree
-  document.getElementById('tr-paralleldegree').style.display = 'none';
-}
+        // Initialize display states
+        function initDisplayStates() {
+            // Hide DSN, Provider, or Server initially
+            document.getElementById('tr-dsn').style.display = 'none';
+            document.getElementById('tr-provider').style.display = 'none';
+            // By default, let's show server (but if connectiontype is empty, we might hide it)
+            document.getElementById('tr-server').style.display = 'table-row';
 
-// On load
-initDisplayStates();
-updateCommand();
-</script>
+            // By default, method is None => hide paralleldegree
+            document.getElementById('tr-paralleldegree').style.display = 'none';
+        }
+
+        // On load
+        initDisplayStates();
+        updateCommand();
+    </script>
 
 </body>
 </html>
