@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1013" height="395">
+<svg xmlns="http://www.w3.org/2000/svg" width="801" height="461">
    <defs>
       <style type="text/css">
     @namespace "http://www.w3.org/2000/svg";
@@ -23,10 +23,10 @@
                             font-weight: normal;
                           }
     rect, circle, polygon {fill: #181818; stroke: #181818;}
-    rect.terminal         {fill: #444444; stroke: #181818; stroke-width: 1;}
-    rect.nonterminal      {fill: #555555; stroke: #181818; stroke-width: 1;}
+    rect.terminal         {fill: #333333; stroke: #181818; stroke-width: 1;}
+    rect.nonterminal      {fill: #404040; stroke: #181818; stroke-width: 1;}
     rect.text             {fill: none; stroke: none;}
-    polygon.regexp        {fill: #5D5D5D; stroke: #181818; stroke-width: 1;}
+    polygon.regexp        {fill: #464646; stroke: #181818; stroke-width: 1;}
   </style>
    </defs>
    <polygon points="9 17 1 13 1 21"/>
@@ -63,75 +63,82 @@
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#OutputInfoCSV"
       xlink:title="OutputInfoCSV">
-      <rect x="647" y="3" width="114" height="32"/>
-      <rect x="645" y="1" width="114" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="655" y="21">OutputInfoCSV</text>
+      <rect x="45" y="69" width="114" height="32"/>
+      <rect x="43" y="67" width="114" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="53" y="87">OutputInfoCSV</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#FormatCSVOptions"
       xlink:title="FormatCSVOptions">
-      <rect x="801" y="35" width="138" height="32"/>
-      <rect x="799" y="33" width="138" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="809" y="53">FormatCSVOptions</text>
+      <rect x="199" y="101" width="138" height="32"/>
+      <rect x="197" y="99" width="138" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="207" y="119">FormatCSVOptions</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#OutputInfoJSON"
       xlink:title="OutputInfoJSON">
-      <rect x="647" y="79" width="120" height="32"/>
-      <rect x="645" y="77" width="120" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="655" y="97">OutputInfoJSON</text>
+      <rect x="45" y="145" width="120" height="32"/>
+      <rect x="43" y="143" width="120" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="53" y="163">OutputInfoJSON</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#FormatJSONOptions"
       xlink:title="FormatJSONOptions">
-      <rect x="807" y="111" width="144" height="32"/>
-      <rect x="805" y="109" width="144" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="815" y="129">FormatJSONOptions</text>
+      <rect x="205" y="177" width="144" height="32"/>
+      <rect x="203" y="175" width="144" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="213" y="195">FormatJSONOptions</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#OutputInfoXLSX"
       xlink:title="OutputInfoXLSX">
-      <rect x="647" y="155" width="120" height="32"/>
-      <rect x="645" y="153" width="120" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="655" y="173">OutputInfoXLSX</text>
+      <rect x="45" y="221" width="120" height="32"/>
+      <rect x="43" y="219" width="120" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="53" y="239">OutputInfoXLSX</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#FormatXLSXOptions"
       xlink:title="FormatXLSXOptions">
-      <rect x="807" y="187" width="144" height="32"/>
-      <rect x="805" y="185" width="144" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="815" y="205">FormatXLSXOptions</text>
+      <rect x="205" y="253" width="144" height="32"/>
+      <rect x="203" y="251" width="144" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="213" y="271">FormatXLSXOptions</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#OutputInfoParquet"
       xlink:title="OutputInfoParquet">
-      <rect x="647" y="231" width="138" height="32"/>
-      <rect x="645" y="229" width="138" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="655" y="249">OutputInfoParquet</text>
+      <rect x="45" y="297" width="138" height="32"/>
+      <rect x="43" y="295" width="138" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="53" y="315">OutputInfoParquet</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#OutputInfoBinary"
       xlink:title="OutputInfoBinary">
-      <rect x="647" y="275" width="128" height="32"/>
-      <rect x="645" y="273" width="128" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="655" y="293">OutputInfoBinary</text>
+      <rect x="45" y="341" width="128" height="32"/>
+      <rect x="43" y="339" width="128" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="53" y="359">OutputInfoBinary</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#AdvancedParameters"
       xlink:title="AdvancedParameters">
-      <rect x="635" y="361" width="154" height="32"/>
-      <rect x="633" y="359" width="154" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="643" y="379">AdvancedParameters</text>
+      <rect x="429" y="101" width="154" height="32"/>
+      <rect x="427" y="99" width="154" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="437" y="119">AdvancedParameters</text>
    </a>
    <a xmlns:xlink="http://www.w3.org/1999/xlink"
       xlink:href="#LogParameters"
       xlink:title="LogParameters">
-      <rect x="849" y="361" width="116" height="32"/>
-      <rect x="847" y="359" width="116" height="32" class="nonterminal"/>
-      <text class="nonterminal" x="857" y="379">LogParameters</text>
+      <rect x="643" y="101" width="116" height="32"/>
+      <rect x="641" y="99" width="116" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="651" y="119">LogParameters</text>
+   </a>
+   <a xmlns:xlink="http://www.w3.org/1999/xlink"
+      xlink:href="#LicenceParameters"
+      xlink:title="LicenceParameters">
+      <rect x="613" y="427" width="140" height="32"/>
+      <rect x="611" y="425" width="140" height="32" class="nonterminal"/>
+      <text class="nonterminal" x="621" y="445">LicenceParameters</text>
    </a>
    <path class="line"
-         d="m17 17 h2 m0 0 h10 m134 0 h10 m0 0 h10 m122 0 h10 m0 0 h10 m164 0 h10 m0 0 h10 m96 0 h10 m20 0 h10 m114 0 h10 m20 0 h10 m0 0 h148 m-178 0 h20 m158 0 h20 m-198 0 q10 0 10 10 m178 0 q0 -10 10 -10 m-188 10 v12 m178 0 v-12 m-178 12 q0 10 10 10 m158 0 q10 0 10 -10 m-168 10 h10 m138 0 h10 m20 -32 h12 m-364 0 h20 m344 0 h20 m-384 0 q10 0 10 10 m364 0 q0 -10 10 -10 m-374 10 v56 m364 0 v-56 m-364 56 q0 10 10 10 m344 0 q10 0 10 -10 m-354 10 h10 m120 0 h10 m20 0 h10 m0 0 h154 m-184 0 h20 m164 0 h20 m-204 0 q10 0 10 10 m184 0 q0 -10 10 -10 m-194 10 v12 m184 0 v-12 m-184 12 q0 10 10 10 m164 0 q10 0 10 -10 m-174 10 h10 m144 0 h10 m-334 -42 v20 m364 0 v-20 m-364 20 v56 m364 0 v-56 m-364 56 q0 10 10 10 m344 0 q10 0 10 -10 m-354 10 h10 m120 0 h10 m20 0 h10 m0 0 h154 m-184 0 h20 m164 0 h20 m-204 0 q10 0 10 10 m184 0 q0 -10 10 -10 m-194 10 v12 m184 0 v-12 m-184 12 q0 10 10 10 m164 0 q10 0 10 -10 m-174 10 h10 m144 0 h10 m-334 -42 v20 m364 0 v-20 m-364 20 v56 m364 0 v-56 m-364 56 q0 10 10 10 m344 0 q10 0 10 -10 m-354 10 h10 m138 0 h10 m0 0 h186 m-354 -10 v20 m364 0 v-20 m-364 20 v24 m364 0 v-24 m-364 24 q0 10 10 10 m344 0 q10 0 10 -10 m-354 10 h10 m128 0 h10 m0 0 h196 m22 -272 l2 0 m2 0 l2 0 m2 0 l2 0 m-420 326 l2 0 m2 0 l2 0 m2 0 l2 0 m22 0 h10 m0 0 h164 m-194 0 h20 m174 0 h20 m-214 0 q10 0 10 10 m194 0 q0 -10 10 -10 m-204 10 v12 m194 0 v-12 m-194 12 q0 10 10 10 m174 0 q10 0 10 -10 m-184 10 h10 m154 0 h10 m40 -32 h10 m0 0 h126 m-156 0 h20 m136 0 h20 m-176 0 q10 0 10 10 m156 0 q0 -10 10 -10 m-166 10 v12 m156 0 v-12 m-156 12 q0 10 10 10 m136 0 q10 0 10 -10 m-146 10 h10 m116 0 h10 m23 -32 h-3"/>
-   <polygon points="1003 343 1011 339 1011 347"/>
-   <polygon points="1003 343 995 339 995 347"/>
+         d="m17 17 h2 m0 0 h10 m134 0 h10 m0 0 h10 m122 0 h10 m0 0 h10 m164 0 h10 m0 0 h10 m96 0 h10 m2 0 l2 0 m2 0 l2 0 m2 0 l2 0 m-626 66 l2 0 m2 0 l2 0 m2 0 l2 0 m22 0 h10 m114 0 h10 m20 0 h10 m0 0 h148 m-178 0 h20 m158 0 h20 m-198 0 q10 0 10 10 m178 0 q0 -10 10 -10 m-188 10 v12 m178 0 v-12 m-178 12 q0 10 10 10 m158 0 q10 0 10 -10 m-168 10 h10 m138 0 h10 m20 -32 h12 m-364 0 h20 m344 0 h20 m-384 0 q10 0 10 10 m364 0 q0 -10 10 -10 m-374 10 v56 m364 0 v-56 m-364 56 q0 10 10 10 m344 0 q10 0 10 -10 m-354 10 h10 m120 0 h10 m20 0 h10 m0 0 h154 m-184 0 h20 m164 0 h20 m-204 0 q10 0 10 10 m184 0 q0 -10 10 -10 m-194 10 v12 m184 0 v-12 m-184 12 q0 10 10 10 m164 0 q10 0 10 -10 m-174 10 h10 m144 0 h10 m-334 -42 v20 m364 0 v-20 m-364 20 v56 m364 0 v-56 m-364 56 q0 10 10 10 m344 0 q10 0 10 -10 m-354 10 h10 m120 0 h10 m20 0 h10 m0 0 h154 m-184 0 h20 m164 0 h20 m-204 0 q10 0 10 10 m184 0 q0 -10 10 -10 m-194 10 v12 m184 0 v-12 m-184 12 q0 10 10 10 m164 0 q10 0 10 -10 m-174 10 h10 m144 0 h10 m-334 -42 v20 m364 0 v-20 m-364 20 v56 m364 0 v-56 m-364 56 q0 10 10 10 m344 0 q10 0 10 -10 m-354 10 h10 m138 0 h10 m0 0 h186 m-354 -10 v20 m364 0 v-20 m-364 20 v24 m364 0 v-24 m-364 24 q0 10 10 10 m344 0 q10 0 10 -10 m-354 10 h10 m128 0 h10 m0 0 h196 m40 -272 h10 m0 0 h164 m-194 0 h20 m174 0 h20 m-214 0 q10 0 10 10 m194 0 q0 -10 10 -10 m-204 10 v12 m194 0 v-12 m-194 12 q0 10 10 10 m174 0 q10 0 10 -10 m-184 10 h10 m154 0 h10 m40 -32 h10 m0 0 h126 m-156 0 h20 m136 0 h20 m-176 0 q10 0 10 10 m156 0 q0 -10 10 -10 m-166 10 v12 m156 0 v-12 m-156 12 q0 10 10 10 m136 0 q10 0 10 -10 m-146 10 h10 m116 0 h10 m22 -32 l2 0 m2 0 l2 0 m2 0 l2 0 m-230 326 l2 0 m2 0 l2 0 m2 0 l2 0 m22 0 h10 m0 0 h150 m-180 0 h20 m160 0 h20 m-200 0 q10 0 10 10 m180 0 q0 -10 10 -10 m-190 10 v12 m180 0 v-12 m-180 12 q0 10 10 10 m160 0 q10 0 10 -10 m-170 10 h10 m140 0 h10 m23 -32 h-3"/>
+   <polygon points="791 409 799 405 799 413"/>
+   <polygon points="791 409 783 405 783 413"/>
 </svg>

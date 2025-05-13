@@ -137,9 +137,12 @@ You can use the FastBCP Wizard to generate a FastBCP command line : [FastBCP Wiz
 ![AdvancedParameters](diagram/AdvancedParameters.svg)
 
 
-### LogParameters:
+### Log Parameters:
 
 ![LogParameters](diagram/LogParameters.svg)
+
+### Licence Parameters :
+![LicenceParameters](diagram/LicenceParameters.svg)
 
 
 

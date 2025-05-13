@@ -23,10 +23,10 @@
                             font-weight: normal;
                           }
     rect, circle, polygon {fill: #181818; stroke: #181818;}
-    rect.terminal         {fill: #444444; stroke: #181818; stroke-width: 1;}
-    rect.nonterminal      {fill: #555555; stroke: #181818; stroke-width: 1;}
+    rect.terminal         {fill: #333333; stroke: #181818; stroke-width: 1;}
+    rect.nonterminal      {fill: #404040; stroke: #181818; stroke-width: 1;}
     rect.text             {fill: none; stroke: none;}
-    polygon.regexp        {fill: #5D5D5D; stroke: #181818; stroke-width: 1;}
+    polygon.regexp        {fill: #464646; stroke: #181818; stroke-width: 1;}
   </style>
    </defs>
    <polygon points="11 17 3 13 3 21"/>
