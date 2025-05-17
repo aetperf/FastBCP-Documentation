@@ -371,9 +371,9 @@
         </table>
     </div>
 
-    <!--  =================== LICENCE SECTION  =================== -->
+    <!--  =================== LICENsE SECTION  =================== -->
     <div class="section">
-        <h2>Licence</h2>
+        <h2>License</h2>
         <table>
             <thead>
                 <tr>
@@ -384,12 +384,12 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- licence -->
+                <!-- license -->
                 <tr>
-                    <td>Licence</td>
-                    <td><input type="text" id="licence" oninput="updateCommand()"></td>
-                    <td>--licence</td>
-                    <td>[none] if not provided, will use FastTransfer.lic</td>
+                    <td>License</td>
+                    <td><input type="text" id="license" oninput="updateCommand()"></td>
+                    <td>--license</td>
+                    <td>[none] if not provided, will use FastBCP.lic</td>
                 </tr>
             </tbody>
         </table>
@@ -622,10 +622,10 @@
                 args.push(`--settingsfile "${settingsfile}"`);
             }
 
-            // licence
-            const licence = document.getElementById('licence').value.trim();
-            if (licence) {
-                args.push(` --licence "${licence}"`);
+            // license
+            const license = document.getElementById('license').value.trim();
+            if (license) {
+                args.push(` --license "${license}"`);
             }
 
             // Build final command

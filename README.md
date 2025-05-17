@@ -141,8 +141,8 @@ You can use the FastBCP Wizard to generate a FastBCP command line : [FastBCP Wiz
 
 ![LogParameters](diagram/LogParameters.svg)
 
-### Licence Parameters :
-![LicenceParameters](diagram/LicenceParameters.svg)
+### License Parameters :
+![LicenseParameters](diagram/LicenseParameters.svg)
 
 
 
