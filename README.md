@@ -4,6 +4,17 @@ FastBCP is a command line that export data from a database to CSV , JSON,  Parqu
 
 ![FastBCP](images/FastBCP.jpg)
 
+## Table of Contents
+
+- [Supported Sources & Platforms](#supported-sources--platforms)
+- [Supported OS](#supported-os)
+- [Quick Start : installation and wizard](#quick-start--installation-and-wizard)
+- [Usage](#usage-)
+- [Parameters details](#parameters-details)
+- [Logging](#logging)
+- [Some performance results](#some-performance-results)
+- [Examples](#examples)
+
 
 ## Supported Sources & Platforms
 
@@ -158,7 +169,8 @@ There are several authentication methods allowed :
 - SQL Login/Password (`-U` "UserName" `-X` "Password" or `--user` "UserName" `--password` "PassWord")
 
 For Login/Password you can also use the environment variables like FASTBCP_USER and FASTBCP_PASSWORD for exemple or store the password in an encrypted file. 
-Up to you to decrypt the file and it's content before using it in a shell variable that will be used with FastBCP
+Up to you to decrypt the file and it's content before using it in a shell variable that will be used with FastBCP.
+You can also use the `--connectionstring` parameter to define a connection string that will be used to connect to the database. This connection string can contain the user and password in it or use an alternative method of authentication.
 
 
 
@@ -181,6 +193,10 @@ server could be :
 
 ### Database (`-I` or `--database`)
 Optionnaly define a source database.
+
+### Connection String (`-G` or `--connectionstring`)
+You can use a connection string to define the connection to the database. This connection string will override any other connexion parameters. 
+You can use the connection string for any connection type. The connection string must be enclosed in double quotes.
 
 ## Source Infos
 
