@@ -60,11 +60,15 @@ Teradata | ✅ | ✅ | ❌
 
 
 ## Quick Start : installation and wizard
-If you want to use it quickly, download the lastest Release and unzip it to a director. 
+If you want to use it quickly, download the lastest Release and unzip it to a directory. For Linux user run a `chmod +x FastBCP` command.
+
+For the trial you are read to run FastBCP.
+
+**For other edition than trial you will need a valid license.** By default FastBCP will try to find a FastBCP.lic file in the same directory.  You can also provide another path or an url in your organisation using the `--license` parameter.
 
 For the following databases drivers are embedded : Clickhouse, DuckDB, MS SQLServer, Netezza, Oracle, MySQL, PostgreSQL, SAP HANA and Teradata .
 
-You will need to install your ODBC or OLEDB drivers of your favorite database in order to use it with ODBC or OLEDB connectiontype.
+If you need another database not in the list, you can use ODBC or OLEDB but you will need to install your ODBC or OLEDB drivers of your favorite database in order to use it with ODBC or OLEDB connectiontype.
 
 You can use the FastBCP Wizard to generate a FastBCP command line : [FastBCP Wizard](./FastBCP_Wizard.html)
 
