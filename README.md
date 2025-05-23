@@ -48,6 +48,8 @@ Teradata | ✅ | ✅ | ❌
 | SUSE Enterprise Linux         | 15.6                        | Arm64, x64            | 
 | Ubuntu                        | 24.10, 24.04, 22.04, 20.04  | Arm64, x64            | 
 
+Here is a page that documents how to check the certificate on Linux. : [check linux certificate](./security/check_certificate_linux.md).
+
 ### Windows
 
 | OS                            | Versions                    | Architectures         | 
