@@ -1,6 +1,16 @@
 ## Verifying FastBCP Linux Binary Integrity and Authenticity
 
-The zip file contains 3 files:
+**TL;DR**
+```bash
+cd FastBCP-linux-x64  
+sha256sum -c FastBCP.sha256sum.txt  
+gpg --keyserver keys.openpgp.org --recv-keys 37007D091BF7DCC74D208A1F869511C7130465C8  
+gpg --verify FastBCP.sha256sum.txt.asc FastBCP.sha256sum.txt  
+```
+
+---
+
+The unzipped directory contains 3 files:
 - `FastBCP`
 - `FastBCP.sha256sum.txt`
 - `FastBCP.sha256sum.txt.asc`
@@ -19,7 +29,7 @@ cat FastBCP.sha256sum.txt
 
 	2A44F461EB444506FC9DE1F1AD09F6CCF441C76B07DD6AC6E4E46DB2D61D9F3E  FastBCP%
 
-Or you can verify its integrity using a single command:
+Or you can verify its integrity using a single command, ensuring that the SHA256 checksum of the `FastBCP` file matches the one provided in the `FastBCP.sha256sum.txt` file:
 ```bash
 sha256sum -c FastBCP.sha256sum.txt
 ```
