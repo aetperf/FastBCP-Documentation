@@ -1290,4 +1290,40 @@ $query="SELECT * FROM SOC1.ADR"
 --encoding "UTF-8" `
 --method "None" `
 
+
+# source mssql to excel files in Parallel with DataDriven method by nation_name
+.\FastBCP.exe `
+--connectiontype "mssql" `
+--trusted `
+--server "localhost" `
+--database "tpch10_collation_bin2" `
+--directory "D:\temp" `
+--fileoutput "sales.xlsx" `
+--sourcetable "sales" `
+--method "DataDriven" `
+--distributekeycolumn "n_nationkey" `
+--query "SELECT * FROM (SELECT
+        YEAR(o.o_orderdate) AS sale_year,
+        MONTH(o.o_orderdate) AS sale_month,
+        n.n_nationkey AS n_nationkey,
+        n.n_name AS n_name,
+        COUNT(DISTINCT l_partkey) as distinct_product,
+        SUM(l.l_quantity) AS total_quantity,
+        SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_amount
+    FROM
+         lineitem l
+    JOIN orders o ON l.l_orderkey = o.o_orderkey
+    JOIN customer c ON o.o_custkey = c.c_custkey
+    JOIN nation n on n.n_nationkey = c.c_nationkey
+    JOIN part p ON l.l_partkey = p.p_partkey
+    WHERE
+        1=1
+    GROUP BY
+        YEAR(o.o_orderdate),
+        month(o.o_orderdate),
+        n.n_nationkey,
+        n.n_name)" `
+--paralleldegree 12 `
+--merge false
+
 ```
