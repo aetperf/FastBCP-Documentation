@@ -2,7 +2,7 @@
 
 FastBCP is a command line that export data from a database to CSV , JSON,  Parquet or XLSX file(s) (or even binary file(s))
 
-![FastBCP](images/FastBCP.jpg)
+![FastBCP](images/FastBCP.png)
 
 ## Table of Contents
 
