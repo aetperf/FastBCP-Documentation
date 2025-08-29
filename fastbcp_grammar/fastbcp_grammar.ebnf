@@ -9,6 +9,7 @@ FastBCPOptions ::=
     ConnectionParameters
     SourceInfos
     (OutputInfoCSV (|FormatCSVOptions) | OutputInfoJSON (|FormatJSONOptions) | OutputInfoXLSX (|FormatXLSXOptions) | OutputInfoParquet | OutputInfoBinary)
+    (|CloudOptions)
     (|AdvancedParameters)
     (|LogParameters)    
     (|LicenseParameters)
@@ -88,6 +89,9 @@ FormatXLSXOptions ::=
 OutputInfoBinary ::=
      "--fileoutput" FileName.binary 
      "--directory" OutputDirectory
+
+CloudOptions ::=
+   ("--cloudprofile" CloudProfile)
 
 AdvancedParameters ::=
      "--method" ( "None"| ((("Random" | "DataDriven" | "RangeId" | "Ntile" ) "--distributekeycolumn" KeyColumn) | "Ctid" | "Rowid"  ) "--paralleldegree" Degree "--merge" ( "true" | "false" )) 

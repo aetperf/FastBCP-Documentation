@@ -293,6 +293,35 @@
         </table>
     </div>
 
+
+    <!-- ==================== CLOUD OPTION SECTION ==================== -->
+    <div class="section">
+        <h2> Cloud Options</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Description</th>
+                    <th>Value</th>
+                    <th>Parameter</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- cloudprofile -->
+                <tr id="tr-cloudprofile">
+                    <td>Cloud Profile</td>
+                    <td><input type="text" id="cloudprofile" oninput="updateCommand()"></td>
+                    <td>--cloudprofile</td>
+                    <td>[none]</td>
+                </tr></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
     <!-- ==================== ADVANCED PARAMETERS SECTION ==================== -->
     <div class="section">
         <h2>Advanced Parameters</h2>
@@ -306,6 +335,7 @@
                 </tr>
             </thead>
             <tbody>
+            
 
 
                 <!-- method -->
@@ -371,7 +401,7 @@
         </table>
     </div>
 
-    <!--  =================== LICENsE SECTION  =================== -->
+    <!--  =================== LICENSE SECTION  =================== -->
     <div class="section">
         <h2>License</h2>
         <table>
@@ -590,6 +620,12 @@
                 if (pd) {
                     args.push(`--paralleldegree ${pd}`);
                 }
+            }
+
+            // --cloudprofile
+            const cp = document.getElementById('cloudprofile').value.trim();
+            if (cp) {
+                args.push(`--cloudprofile "${cp}"`);
             }
 
             // --distributekeycolumn
