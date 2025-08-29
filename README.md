@@ -314,7 +314,10 @@ You can adapt what and where you want to log using the `FastBCP_settings.json` f
 If this file is not present in the same directory that FastBCP, FastBCP will use the console log only.
 You can also use a custom file name for the settings file using the `-f` or `--settingsfile` parameter.
 
-
+Some settings files samples can be found here :
+ - [FastBCP_Settings.json for Windows with Console + Files + MSSQL sinks](logging/FastBCP_Settings.json)
+ - [FastBCP_Settings_Linux_Console_Files.json for Linux with Console + Files](logging/FastBCP_Settings_Linux_Console_Files.json)
+ 
 ### Log Levels
 to configure the log level you can change the MinimumLevel in the ***FastBCP_settings.json*** file.
 The log levels are :

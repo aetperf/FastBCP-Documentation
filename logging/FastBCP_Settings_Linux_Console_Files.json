@@ -1,0 +1,192 @@
+{
+  "ConnectionStrings": {
+    "MS_FastBCPLogs": "Server=localhost;Database=FastBCPLogs;Integrated Security=SSPI;Encrypt=True;TrustServerCertificate=True"
+  },
+  "Serilog": {
+    "Using": [
+      "Serilog.Sinks.Console",
+      "Serilog.Sinks.File",
+      "Serilog.Enrichers.Environment",
+      "Serilog.Enrichers.Thread",
+      "Serilog.Enrichers.Process",
+      "Serilog.Enrichers.Context"
+    ],
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "outputTemplate": "{Timestamp:yyyy-MM-ddTHH:mm:ss.fff zzz} -|- {Application} -|- {runid} -|- {Level:u12} -|- {fulltargetname} -|- {Message}{NewLine}{Exception}"
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "fileSizeLimitBytes": 4194304,
+          "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact",
+          "path": "Logs\\FastBCP_.json",
+          "retainedFileCountLimit": 10,
+          "rollingInterval": "Day",
+          "rollOnFileSizeLimit": true
+        }
+      },
+      {
+        "Name": "MSSqlServer",
+        "Args": {
+          "connectionString": "MS_FastBCPLogs",
+          "sinkOptionsSection": {
+            "TableName": "EventLogs",
+            "SchemaName": "dbo",
+            "DatabaseName": "FastTransferLogs",
+            "AutoCreateSqlDatabase": true,
+            "AutoCreateSqlTable": true,
+            "BatchPostingLimit": 50,
+            "BatchPeriod": "0.00:00:05",
+            "UseSqlBulkCopy": false
+          },
+          "restrictedToMinimumLevel": "Information",
+          "columnOptionsSection": {
+            "disableTriggers": true,
+            "clusteredColumnstoreIndex": false,
+            "removeStandardColumns": [
+              "Id",
+              "MessageTemplate",
+              "Properties",
+              "Exception"
+            ],
+            "additionalColumns": [
+              {
+                "ColumnName": "ErrorSummary",
+                "PropertyName": "rootcauseMessage",
+                "DataType": "nvarchar",
+                "DataLength": 4000
+              },
+              {
+                "ColumnName": "EventType",
+                "PropertyName": "EventType",
+                "DataType": "varchar",
+                "DataLength": 50
+              },
+              {
+                "ColumnName": "FullTargetName",
+                "PropertyName": "fulltargetname",
+                "DataType": "nvarchar",
+                "DataLength": 400
+              },
+              {
+                "ColumnName": "Status",
+                "PropertyName": "finalStatus",
+                "DataType": "int"
+              },
+              {
+                "ColumnName": "Rows",
+                "PropertyName": "loadedRows",
+                "DataType": "bigint"
+              },
+              {
+                "ColumnName": "Columns",
+                "PropertyName": "loadedCols",
+                "DataType": "int"
+              },
+              {
+                "ColumnName": "ElaspedMs",
+                "PropertyName": "loadElapsedMs",
+                "DataType": "bigint"
+              },
+              {
+                "ColumnName": "MachineName",
+                "PropertyName": "MachineName",
+                "DataType": "varchar",
+                "DataLength": 256
+              },
+              {
+                "ColumnName": "Application",
+                "PropertyName": "Application",
+                "DataType": "varchar",
+                "DataLength": 50
+              },
+              {
+                "ColumnName": "ProcessId",
+                "PropertyName": "ProcessId",
+                "DataType": "int"
+              },
+              {
+                "ColumnName": "ThreadId",
+                "PropertyName": "ThreadId",
+                "DataType": "int"
+              },
+              {
+                "ColumnName": "RunId",
+                "PropertyName": "runid",
+                "nonClusteredIndex": true,
+                "DataType": "varchar",
+                "DataLength": 256
+              },
+              {
+                "ColumnName": "TraceId",
+                "PropertyName": "traceid",
+                "nonClusteredIndex": true,
+                "DataType": "varchar",
+                "DataLength": 100
+              },
+              {
+                "ColumnName": "SpanId",
+                "PropertyName": "SpanId",
+                "DataType": "varchar",
+                "DataLength": 100
+              },
+              {
+                "ColumnName": "Release",
+                "PropertyName": "release",
+                "DataType": "varchar",
+                "DataLength": 32
+              },
+              {
+                "ColumnName": "EnvironmentUserName",
+                "PropertyName": "EnvironmentUserName",
+                "DataType": "varchar",
+                "DataLength": 200
+              },
+              {
+                "ColumnName": "InputParameters",
+                "PropertyName": "InputParameters",
+                "DataType": "varchar",
+                "DataLength": 8000
+              }
+            ],
+            "level": {
+              "columnName": "Severity",
+              "storeAsEnum": false,
+              "DataType": "varchar",
+              "DataLength": 50
+            },
+            "timeStamp": {
+              "columnName": "EventTimestamp",
+              "nonClusteredIndex": true,
+              "convertToUtc": false
+            },
+            "logEvent": {
+              "excludeAdditionalProperties": false,
+              "excludeStandardColumns": true
+            },
+            "message": {
+              "columnName": "EventMsg",
+              "DataType": "varchar",
+              "DataLength": 8000
+
+            }
+          }
+        }
+      }
+    ],
+    "Enrich": [
+      "FromLogContext",
+      "WithMachineName",
+      "WithProcessId",
+      "WithThreadId"
+    ],
+    "Properties": {
+      "Application": "FastBCP"
+    }
+  }
+}
