@@ -38,6 +38,7 @@ Teradata | ✅ | ✅ | ❌
 
 | OS                            | Versions                    | Architectures         | 
 | ----------------------------- | --------------------------- | --------------------- | 
+| Amazon Linux                  | 2023 (Kernel 6.1)		      | Arm64, x64            | 
 | Alpine                        | 3.21, 3.20, 3.19, 3.18      | Arm64, x64            | 
 | Azure Linux                   | 3.0                         | Arm64, x64            | 
 | CentOS Stream                 | 10, 9                       | Arm64, x64            | 
@@ -47,6 +48,7 @@ Teradata | ✅ | ✅ | ❌
 | Red Hat Enterprise Linux      | 10, 9, 8                    | Arm64, x64            | 
 | SUSE Enterprise Linux         | 15.6                        | Arm64, x64            | 
 | Ubuntu                        | 24.10, 24.04, 22.04, 20.04  | Arm64, x64            | 
+
 
 Here is a page that documents how to check the certificate on Linux. : [check linux certificate](./security/check_certificate_linux.md).
 
