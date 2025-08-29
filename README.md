@@ -269,8 +269,8 @@ How boolean are formatted (`true/false`, `t/f` or `1/0`)
 specify the name of the profile (defined using aws cli : `aws configure --profile profilename`)
 
 **Nota** : You must set the environment variable FASTBCP_CLOUD_PROVIDER to aws
-on linux : `export FASTBCP_CLOUD_PROVIDER=aws`
-on windows powershell : `$env:FASTBCP_CLOUD_PROVIDER="aws"`
+- on linux : `export FASTBCP_CLOUD_PROVIDER=aws`
+- on windows powershell : `$env:FASTBCP_CLOUD_PROVIDER="aws"`
 
 ## Advanced Parameters 
 
