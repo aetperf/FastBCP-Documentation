@@ -274,6 +274,13 @@ specify the name of the profile (defined using aws cli : `aws configure --profil
 - on linux : `export FASTBCP_CLOUD_PROVIDER=aws`
 - on windows powershell : `$env:FASTBCP_CLOUD_PROVIDER="aws"`
 
+**Nota2** : Cloud user must have permissions to do multipart uploads :
+- `s3:PutObject`
+- `s3:AbortMultipartUpload`
+- `s3:ListMultipartUploadParts`
+
+
+
 ## Advanced Parameters 
 
 ### Distribution Method (`-m` or `--method`)
