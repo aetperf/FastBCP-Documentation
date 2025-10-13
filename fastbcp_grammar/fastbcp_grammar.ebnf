@@ -101,5 +101,5 @@ LogParameters ::=
     (|"--settingsfile" SettingsFile)
 
 LicenseParameters ::=
-    (|"--license" (Licensefile|Licenseurl))
+    (|"--license" (Licensefile|Licenseurl|Licensecontent))
 

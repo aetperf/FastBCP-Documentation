@@ -332,7 +332,8 @@ You can specify if the "temporary" files generated for the parallel export shoul
 **Warning** : Current version allow valid merge for CSV and Parquet only.
 
 ### License (`--license`)
-By defaulf FastBCP will try to use the license file named FastBCP.lic in the same directory as FastBCP. You can specify a custom license file using the `--license` parameter to define another filepath or even an http endpoint to retrieve the license file.
+By defaulf FastBCP will try to use the **license file** named **FastBCP.lic** in the same directory as FastBCP. You can specify a **custom license file** using the `--license` parameter to define **another filepath or even an http(s) endpoint** to retrieve the license file.
+You can also provide the **license content** directly. In this case using a variable or environment variable is recommended.
 
 # Logging 
 ## Parameter Logs targets using FastBCP_settings.json
