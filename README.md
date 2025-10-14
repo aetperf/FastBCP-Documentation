@@ -474,7 +474,7 @@ You can have a lookp on the live [FastBCP Performance dashboard](https://public.
 --runid "oracle_to_excel_parallel_rowid"
 ```
 
-#### Parallel using RangeId from mssql to parquet on AWS S3 bucket:
+#### Parallel using RangeId from mssql to parquet on AWS S3 bucket (create a aws cli profile if you want to use the `--cloudprofile` parameter ):
 ``` powershell
 .\FastBCP.exe `
 --connectiontype mssql `
@@ -493,7 +493,7 @@ You can have a lookp on the live [FastBCP Performance dashboard](https://public.
 ```
 
 
-#### Parallel using RangeId from mssql to parquet on GCS bucket:
+#### Parallel using RangeId from mssql to parquet on GCS bucket (you can use a json secret file of a service account as one of the auth method to gcs) :
 ``` powershell
 .\FastBCP.exe `
 --connectiontype mssql `
@@ -502,7 +502,7 @@ You can have a lookp on the live [FastBCP Performance dashboard](https://public.
 --trusted `
 --query "SELECT * FROM dbo.orders" `
 --directory "gs://targetbucket/bronze/tpch" `
---cloudprofile "fastbcp_profile" `
+--cloudprofile "C:\Users\romai\fastbcp_arpeio_key.json"`
 --fileoutput "mssql_orders.parquet" `
 --method RangeId `
 --distributekeycolumn "o_orderkey" `
@@ -510,6 +510,8 @@ You can have a lookp on the live [FastBCP Performance dashboard](https://public.
 --merge false `
 --runid "mssql_to_parquet_aws_s3"
 ```
+
+
 
 #### Parallel using DataDriven from mssql to parquet on GCS bucket with datadriven query:
 ``` powershell
