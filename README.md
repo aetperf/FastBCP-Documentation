@@ -566,5 +566,28 @@ $env:AZURE_CLIENT_SECRET="<SecretID>"
 --datadrivenquery " select top 100 * from (select distinct o_orderdate from orders WHERE o_orderdate between '19950101' and '19950630') a order by 1 desc"
 ```
 
+#### on a S3 compatible storage (like OVH, MinIO, Ceph, etc ...) you must define the S3_ENDPOINT environment variable to define the proper S3 endpoint :
+use aws cli to create a profile and store your credentials in the profile
+
+``` powershell
+$env:S3_ENDPOINT="https://s3.gra.io.cloud.ovh.net/"
+$env:FASTBCP_CLOUD_REGION="gra"
+
+.\FastBCP.exe `
+--connectiontype "mssql" `
+--server "localhost" `
+--database "tpch10_collation_bin2" `
+--trusted `
+--query "select * from orders" `
+--directory "s3://arpeiofastbcp/staging/" `
+--fileoutput "mssql_orders.parquet" `
+--method "DataDriven" `
+--distributekeycolumn "o_orderdate" `
+--datadrivenquery " select top 10 * from (select distinct o_orderdate from orders WHERE o_orderdate between '19950101' and '19950131') a order by 1 desc" `
+--cloudprofile "ovhgraveline"
+```
+
+
+
 You can find more exemples in the [samples.ps1](samples.ps1.md) file
 
