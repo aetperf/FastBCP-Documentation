@@ -1,0 +1,50 @@
+{  
+  "Serilog": {
+    "Using": [
+      "Serilog.Sinks.Console",
+      "Serilog.Sinks.File",
+      "Serilog.Enrichers.Environment",
+      "Serilog.Enrichers.Thread",
+      "Serilog.Enrichers.Process",
+      "Serilog.Enrichers.Context"
+    ],
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "outputTemplate": "{Timestamp:yyyy-MM-ddTHH:mm:ss.fff zzz} -|- {Application} -|- {runid} -|- {Level:u12} -|- {fulltargetname} -|- {Message}{NewLine}{Exception}"
+        }
+      },
+      {
+        "Name": "Map",
+        "Args": {
+          "keyPropertyName": "TraceId",
+          "defaultKey": "no-trace",
+          "to": [
+            {
+              "Name": "File",
+              "Args": {
+                "path": "C:\\temp\\Logs\\{logdate}\\{sourcedatabase}\\{sourcetable}\\FastBCP-log-{filename}-{logtimestamp}-{traceid}.json",
+                "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact",
+                "rollingInterval": "Infinite",
+                "shared": false,
+                "encoding": "utf-8",
+                "retainedFileCountLimit": 100
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "Enrich": [
+      "FromLogContext",
+      "WithMachineName",
+      "WithProcessId",
+      "WithThreadId"
+    ],
+    "Properties": {
+      "Application": "FastBCP"
+    }
+  }
+}

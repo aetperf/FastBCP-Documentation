@@ -339,7 +339,7 @@ You can also provide the **license content** directly. In this case using a vari
 ## Parameter Logs targets using FastBCP_settings.json
 FastBCP can log informations in 3 modes :
 - Console
-- File
+- File (or Map)
 - Database (MSSQL and PostgreSQL Only)
 
 You can use several targets at the same time.
@@ -349,9 +349,10 @@ If this file is not present in the same directory that FastBCP, FastBCP will use
 You can also use a custom file name for the settings file using the `-f` or `--settingsfile` parameter.
 
 Some settings files samples can be found here :
- - [FastBCP_Settings.json for Windows with Console + Files + MSSQL sinks](logging/FastBCP_Settings.json)
- - [FastBCP_Settings_Linux_Console_Files.json for Linux with Console + Files](logging/FastBCP_Settings_Linux_Console_Files.json)
- 
+ - [FastBCP_Settings.json for Windows](logging/FastBCP_Settings.json) :  For logs with Console + Files stored on windows machine + MSSQL sinks:
+ - [FastBCP_Settings_Linux_Console_Files.json](logging/FastBCP_Settings_Linux_Console_Files.json) : for Linux with Console + Dayly rolling Files 
+ - [FastBCP_Settings_Map_for_Windows.json](logging/FastBCP_Settings_Map_for_Windows.json) : For Console and dynamicaly name log file target
+ - [FastBCP_Settings_Map_for_Linux_and_Container.json](logging/FastBCP_Settings_Map_for_Linux_and_Container.json) : For Console and dynamicaly name log file target
 ### Log Levels
 to configure the log level you can change the MinimumLevel in the ***FastBCP_settings.json*** file.
 The log levels are :
@@ -373,6 +374,55 @@ Use a correct connection string for your log database.
 
 In case the database is not reachable, FastBCP will failed and will refuse to continue. 
 If you want to continue without logging in the database, you can rename the ***FastBCP_settings.json*** and FastBCP will use the console log only.
+
+### Log Files Names Mapping using variables
+You can use variables to define the log file path and files names in the ***FastBCP_settings.json***
+In the WriteTo array you can use a Map like that :
+``` json
+{
+  "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "outputTemplate": "{Timestamp:yyyy-MM-ddTHH:mm:ss.fff zzz} -|- {Application} -|- {runid} -|- {Level:u12} -|- {fulltargetname} -|- {Message}{NewLine}{Exception}"
+        }
+      },
+      {
+        "Name": "Map",
+        "Args": {
+          "keyPropertyName": "TraceId",
+          "defaultKey": "no-trace",
+          "to": [
+            {
+              "Name": "File",
+              "Args": {
+                "path": "/logs/{logdate}/{sourcedatabase}/{sourcetable}/FastBCP-log-{filename}-{logtimestamp}-{traceid}.json",
+                "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact",
+                "rollingInterval": "Infinite",
+                "shared": false,
+                "encoding": "utf-8",
+                "retainedFileCountLimit": 100
+              }
+            }
+          ]
+        }
+      }
+    ]
+}
+```
+
+The available variables are :
+
+| Variable Name     | Description                                      |
+|:------------------|:-------------------------------------------------|
+| `{logdate}`        | Current date in yyyy-MM-dd format                |
+| `{logtimestamp}`   | Timestamp of the log entry                        |
+| `{sourcedatabase}` | Name of the source database                       |
+| `{sourceschema}`   | Name of the source schema                         |
+| `{sourcetable}`    | Name of the source table                          |
+| `{filename}`       | Name of the file being processed                  |
+| `{runid}`          | Run identifier provided in the command line       |
+| `{traceid}`       | Unique identifier generate at runtime            |
 
 ### Log Targets
 You can configure the log targets in the ***FastBCP_settings.json*** file. in the **"WriteTo"** section.
