@@ -66,9 +66,9 @@ Here is a page that documents how to check the certificate on Linux. : [check li
 ## Quick Start : installation and wizard
 If you want to use it quickly, download the lastest Release and unzip it to a directory. For Linux user run a `chmod +x FastBCP` command.
 
-For the trial you are read to run FastBCP.
+For the trial you are ready to run FastBCP.
 
-**For other edition than trial you will need a valid license.** By default FastBCP will try to find a FastBCP.lic file in the same directory.  You can also provide another path or an url in your organisation using the `--license` parameter.
+**After the trial period you will need a valid license.** By default FastBCP will try to find a FastBCP.lic file in the same directory as the executable. You can also provide another path or an url or even the license content using the `--license` parameter
 
 For the following databases drivers are embedded : Clickhouse, DuckDB, MS SQLServer, Netezza, Oracle, MySQL, PostgreSQL, SAP HANA and Teradata .
 
@@ -332,7 +332,7 @@ You can specify if the "temporary" files generated for the parallel export shoul
 **Warning** : Current version allow valid merge for CSV and Parquet only.
 
 ### License (`--license`)
-By defaulf FastBCP will try to use the **license file** named **FastBCP.lic** in the same directory as FastBCP. You can specify a **custom license file** using the `--license` parameter to define **another filepath or even an http(s) endpoint** to retrieve the license file.
+By default FastBCP will try to use the **license file** named **FastBCP.lic** in the same directory as FastBCP executable. You can specify a **custom license file** using the `--license` parameter to define **another filepath or even an http(s) endpoint** to retrieve the license file.
 You can also provide the **license content** directly. In this case using a variable or environment variable is recommended.
 
 # Logging 
@@ -411,7 +411,7 @@ In the WriteTo array you can use a Map like that :
 }
 ```
 
-The available variables are :
+The available variables to customize log path or log filename are :
 
 | Variable Name     | Description                                      |
 |:------------------|:-------------------------------------------------|
@@ -575,7 +575,7 @@ You can have a lookp on the live [FastBCP Performance dashboard](https://public.
 --fileoutput "mssql_orders.parquet" `
 --method "DataDriven" `
 --distributekeycolumn "o_orderdate" `
---datadrivenquery " select top 100 * from (select distinct o_orderdate from orders WHERE o_orderdate between '19950101' and '19950630') a order by 1desc" `
+--datadrivenquery "select top 100 * from (select distinct o_orderdate from orders WHERE o_orderdate between '19950101' and '19950630') a order by 1 desc" `
 --cloudprofile "C:\app\fastbcp\gcs\fastbcp_arpeio_key.json"
 --paralleldegree -2
 ```
