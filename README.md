@@ -330,24 +330,27 @@ For S3, Azure and GCS, without a cloud profile, FastBCP will try to use the defa
 You can improve performance by using a method for parallelize the export (`-m` or `--method`) and a degree of parallelism (-p or --paralleldegree).
 The method (`-m` or `--method`) can take several values :
 - `None` (No parallelism)
-- `Random` : this method is linked to a distribution column that must be an integer/bigint and that should have many values  (at least as many as the dop)
-- `DataDriven` : this method will use all the values of a column to split the export to different files. If the number of values is greater than the dop, the dop will be used like a throttling. You can use an expression in the distributekeycolumn parameter instead a column ==> eg : YEAR(o_orderdate).
-- `Rowid` : this method use internal hidden field to retrieve chunk of data. Each parallel thread will export a portion of the data based on the ROWID range. Oracle like databases only.
-- `Ctid` : this method use internal hidden field to retrieve chunk of data. Each parallel thread will export a portion of the data based on the CTID range. PostgreSQL like databases only.
-- `RangeId` : this method use the distributed column field and it's min and max value to retrieve chunk of data. Each parallel thread will export a portion of the data based on a range build using de distributed column values. Best if table is clustered by this field. The unicity of the distributed column is **not** mandatory.
+- `DataDriven` : this method will use all the values of a column (or a given list provided by the `--datadrivenquery` parameter) to split the export to different files. If the number of values is greater than the dop, the dop will be used like a throttling. You can use an expression in the distributekeycolumn parameter instead a column ==> eg : YEAR(o_orderdate).
 - `Ntile` : this method use the distributed column field and ntile values to retrieve evenlly distributed chunk of data. Each parallel thread will export a portion of the data based on a range build using the distributed column values. The unicity of the distributed column is **not** mandatory.
+- `RangeId` : this method use the distributed column field and it's min and max value to retrieve chunk of data. Each parallel thread will export a portion of the data based on a range build using de distributed column values. Best if table is clustered by this field. The unicity of the distributed column is **not** mandatory.
+- `Random` : this method is linked to a distribution column that must be an integer/bigint and that should have many values  (at least as many as the dop)
+
+- `Ctid` : this method use internal hidden field to retrieve chunk of data. Each parallel thread will export a portion of the data based on the CTID range. PostgreSQL like databases only (and some compatibles PostgreSQL Databases).
+- `Physloc` : this method use internal hidden field to retrieve chunk of data. Each parallel thread will export a portion of the data based on the Physloc range. SQL Server like databases only.
+- `Rowid` : this method use internal hidden field to retrieve chunk of data. Each parallel thread will export a portion of the data based on the ROWID range. Oracle like databases only.
  
 Table of Distribution Method :
 
-| method     | need a distributed column | database source type |
-|:-------    | :------------------------:| :-------------------:|
-| None       | No						 | Any					|
-| Random     | Yes						 | Any					|
-| DataDriven | Yes						 | Any					|
-| Ctid		 | No						 | PostgreSQL (pgsql/pgcopy) |
-| Rowid		 | No						 | Oracle (oraodp)      |
-| RangeId	 | Yes						 | Any					|
-| Ntile		 | Yes						 | Any					|
+| method     | Parallel | need a distributed column | database source type |
+|:-------    | :--:| :------------------------: | :-------------------:|
+| None       | No | No						    | Any					|
+| Random     | Yes | Yes					    | Any					|
+| DataDriven | Yes | Yes					    | Any					|
+| RangeId	 | Yes | Yes					    | Any					|
+| Ntile		 | Yes | Yes					    | Any					|
+| Ctid		 | Yes | No						    | PostgreSQL (pgsql/pgcopy) |
+| Physloc	 | Yes | No						    | Sql Server (mssql)    |
+| Rowid		 | Yes | No						    | Oracle (oraodp)       |
 
 
 ### Distribute Key Column (`-c` or `--distributekeycolumn`)
@@ -357,6 +360,9 @@ Define the column (or computation) on the data source that will be used to split
 the degree of parallelism could be 0. In this case the dop we be allign with the number of cores(threads if HT is on) on the machine where you run FastBCP.
 If the dop is greater than the number of cores (or threads if HT is on) then it will be downscale to the number of cores/threads of the machine.
 If the dop is less than 0 it will be computed as the number of cores/(abs(dop)). For exemple if you have 16 cores and you set dop to -2 then the dop will computed and set to 8.
+
+### Data Driven Query (`--datadrivenquery`)
+When using the DataDriven method, you can provide a query that will return the list of values that will be used to split the data. You can thus filter the values that will be exported and used to split the data.
 
 ### Merge (`-M` or `--merge`)
 You can specify if the "temporary" files generated for the parallel export should be merge to the final ouput file and deleted or if you prefer to keep the distributed files without merging them (faster export and later faster import).
