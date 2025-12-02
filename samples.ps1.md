@@ -232,6 +232,21 @@ bcp "FASTExportData.dbo.TEST_71_1M_12m" out C:\TEMP\BCP_1M71C.out -S localhost -
 --distributekeycolumn "DT_PERIODE" `
 --merge "false"
 
+# using placeholders in S3 path and filename
+.\FastBCP.exe `
+--connectiontype "mssql" `
+--server "localhost" `
+--sourceschema "dbo" `
+--sourcetable "orders" `
+--database "tpch10_collation_bin2" `
+--trusted `
+--query "select * from orders WHERE o_orderdate between '19950101' and '19950131'" `
+--directory "s3://aetpftoutput/{sourcedatabase}/{sourceschema}/{sourcetable}/partitionbyday/" `
+--fileoutput "mssql_orders_{starttimestamp}.parquet" `
+--method "DataDriven" `
+--distributekeycolumn "o_orderdate" `
+--cloudprofile "aetp_ml"
+
 # mssql to csv using partition function in a ^parallel datadriven
 .\FastBCP.exe `
 --connectiontype "mssql" `
