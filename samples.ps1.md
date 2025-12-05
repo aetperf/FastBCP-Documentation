@@ -1312,16 +1312,16 @@ $query="SELECT * FROM SOC1.ADR"
 --trusted `
 --server "localhost" `
 --database "tpch10_collation_bin2" `
---directory "D:\temp" `
+--directory "D:\temp\sales" `
 --fileoutput "sales.xlsx" `
 --sourcetable "sales" `
 --method "DataDriven" `
---distributekeycolumn "n_nationkey" `
+--distributekeycolumn "country" `
 --query "SELECT * FROM (SELECT
         YEAR(o.o_orderdate) AS sale_year,
         MONTH(o.o_orderdate) AS sale_month,
         n.n_nationkey AS n_nationkey,
-        n.n_name AS n_name,
+        RTRIM(n.n_name) AS country,
         COUNT(DISTINCT l_partkey) as distinct_product,
         SUM(l.l_quantity) AS total_quantity,
         SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_amount
@@ -1337,7 +1337,7 @@ $query="SELECT * FROM SOC1.ADR"
         YEAR(o.o_orderdate),
         month(o.o_orderdate),
         n.n_nationkey,
-        n.n_name)" `
+        RTRIM(n.n_name)) src" `
 --paralleldegree 12 `
 --merge false
 
