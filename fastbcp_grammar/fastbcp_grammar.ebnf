@@ -8,7 +8,7 @@ FastBCPOptions ::=
     "--connectiontype" ConnectionType
     ConnectionParameters
     SourceInfos
-    (OutputInfoCSV (|FormatCSVOptions) | OutputInfoJSON (|FormatJSONOptions) | OutputInfoXLSX (|FormatXLSXOptions) | OutputInfoParquet | OutputInfoBinary)
+    (OutputInfoCSV (|FormatCSVOptions) | OutputInfoJSON (|FormatJSONOptions) | OutputInfoXLSX (|FormatXLSXOptions) | OutputInfoParquet (|FormatParquetOptions) | OutputInfoBinary)
     (|CloudOptions)
     (|AdvancedParameters)
     (|LogParameters)    
@@ -76,6 +76,9 @@ FormatJSONOptions ::=
 OutputInfoParquet ::=
      "--fileoutput" FileName.parquet 
      "--directory" OutputDirectory
+
+FormatParquetOptions ::=
+     (|"--parquetcompression" CompressionMethod)
 
 OutputInfoXLSX ::=
      "--fileoutput" (FileName.xlsx) 
