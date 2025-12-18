@@ -282,7 +282,7 @@ The character(s) that will be used as field delimiter
 Add quotes "" for string fields (will escape " by \ if found in the data field)
 value can be `true` or `false`
 
-#### Date Format (`-f` or `--dateforma`)
+#### Date Format (`-f` or `--dateformat`)
 
 Date format like "yyyy-MM-dd HH:mm:ss"
 
