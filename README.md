@@ -127,6 +127,10 @@ You can use the FastBCP Wizard to generate a FastBCP command line : [FastBCP Wiz
 
 ![FormatXLSXOptions](diagram/FormatXLSXOptions.svg)
 
+**FormatParquetOptions:**
+
+![FormatParquetOptions](diagram/FormatParquetOptions.svg)
+
 #### OutputInfoBinary
 
 ![OutputInfoBinary](diagram/OutputInfoBinary.svg)
